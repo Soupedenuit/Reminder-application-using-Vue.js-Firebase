@@ -1,0 +1,80 @@
+﻿<!doctype html>
+<html>
+
+<head>
+
+  <link rel="stylesheet" type="text/css" href="vue_components.css">
+  <link href="https://fonts.googleapis.com/css?family=Poiret+One|Open+Sans|Roboto" rel="stylesheet">
+  <html lang="en-US">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vue.js Components</title>
+  <!--<link rel="icon" type="image/png" href="xxIMAGE.png" />-->
+
+</head>
+
+
+<body>
+
+
+<h1>Vue.js Components</h1>
+
+
+<div id="component1">
+  <session-time style="margin: 0; position:absolute; top: 10px; right: 10px;"></session-time>
+</div>
+
+
+<div id="instance1">
+  <p style="margin: 0; position:absolute; top: 10px; left: 10px;" v-html="todayDate()"></p>
+  <p>{{ welcomeMsg }}</p>
+</div>
+
+
+<div id="instance2">
+
+<form action=""> <!--onkeypress="return event.keyCode != 13">-->
+  <input type="text" id="addToList" />
+  <button type="button" id="toDoItem">add to list</button>
+</form>
+
+<ul>
+  <!--<todo-item
+    v-for="todo in toDoList"
+    v-bind:todo="item"
+    v-bind:key="item.id">
+  </todo-item>-->
+  <li v-for="todo in toDoList"><span>
+    {{ todo.text }}
+  </span></li>
+</ul>
+
+</div>
+
+<!--<div id="created">
+  <p>This project was initiated {{ elapsedTime }} ago<br /> {{ sessionTime }}</p>
+
+<created-ago></created-ago>
+
+</div>
+-->
+
+
+<!-- SCRIPTS**************************************** -->
+
+<script type="text/javascript" src="https://unpkg.com/vue@2.4.2">
+</script>
+
+<script type="text/javascript" src="jquery-3.1.1.min.js">
+</script>
+
+<script type="text/javascript" src="time_related_functions.js">
+</script>
+
+<script type="text/javascript" src="vue_components.js">
+</script>
+
+
+</body>
+
+</html>

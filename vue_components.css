@@ -1,0 +1,36 @@
+body {
+  background-color: rgb(50, 50, 50);
+  color: #FFA33E; /*rgb(175,175,175);*/
+  font-family: 'Open Sans', 'Poiret One';
+  margin: 0;
+  padding: 0;
+}
+
+h1, p {
+  text-align: center;
+  margin: 10px 0 10px 0;
+}
+
+p:first-child {
+  font-size: 0.9em;
+}
+
+#instance2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+ul {
+  list-style-position: inside;
+  margin-left: -2em;
+}
+
+ul li span{
+position: relative;
+left: -0.5em;
