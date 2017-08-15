@@ -129,11 +129,11 @@ var sessionTime = function() {
 
 
   if ( diffInSeconds < 60 ) {
-      text = text + `This session just opened now (${diffInSeconds} ${secs} ago)`;
+      text = text + `This session just opened now<br /> (${diffInSeconds} ${secs} ago)`;
     }
 
   else if ( diffInMinutes < 60 ) {
-    text = text + `This session has been open for ${diffInMinutes} ${mins} and ${secsAfterMinutes} ${secs}`;
+    text = text + `This session has been open for<br /> ${diffInMinutes} ${mins} and ${secsAfterMinutes} ${secs}`;
   }
 
   else if ( diffInMinutes < 1440 ) {
