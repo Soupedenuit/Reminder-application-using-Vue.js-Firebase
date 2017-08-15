@@ -65,7 +65,7 @@ var toDoInstance = new Vue({
       { id: 1, text: '<button type="button" class="del" onclick="deleteItem(1)">x</button>learn MongoDB' },
       { id: 2, text: '<button type="button" class="del" onclick="deleteItem(2)">x</button>learn Kung Fu' }
     ],
-    project: 'a To-Do app project (work in progress). Try it out!'
+    project: '<p>a To-Do app project (work in progress). Try&nbspit&nbspout!</p>'
   }
 });
 
