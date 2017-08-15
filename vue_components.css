@@ -1,25 +1,51 @@
 body {
-  background-color: rgb(50, 50, 50);
+  background-color: rgb(35, 35, 35);
   color: #FFA33E; /*rgb(175,175,175);*/
   font-family: 'Open Sans', 'Poiret One';
   margin: 0;
   padding: 0;
 }
 
+nav {
+  /*margin: 0 0 auto 0;*/
+  background-color: rgba(30, 30, 30, 0.8);
+  height: 60px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  box-shadow: 0 4px 8px 2px rgba(0, 0, 0, 0.19), 0 6px 20px 2px rgba(0, 0, 0, 0.20);
+  border-bottom: 1px solid black;
+  z-index: 1
+}
+
 h1, p {
   text-align: center;
-  margin: 10px 0 10px 0;
 }
 
-p:first-child {
-  font-size: 0.9em;
+#welcomeInstance {
+  margin-top: 70px;
 }
 
-#instance2 {
+#sessionTimeComponent, #todayDateInstance {
+  font-size: 0.8em;
+}
+
+#toDoInstance {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 100px;
+  margin-top: 20px;
+}
+
+#toDoInstance p {
+  margin-top: 70px;
+}
+
+button {
+  margin-right: 15px;
+  background-color: #FFA33E;
+  border: solid 1px black;
+  border-radius: 0.75em;
 }
 
 button:hover {
@@ -29,8 +55,35 @@ button:hover {
 ul {
   list-style-position: inside;
   margin-left: -2em;
+  list-style-type: none;
 }
 
-ul li span{
+ul li span {
 position: relative;
 left: -0.5em;
+}
+
+
+/* MEDIA QUERIES:  */
+
+@media (orientation: landscape) {
+
+}
+
+@media (max-height: 770px) {
+
+}
+
+@media (max-width: 770px) {
+  #sessionTimeComponent, #todayDateInstance {
+    display: none;
+  }
+}
+
+@media (orientation: landscape) and (max-width: 770px) {
+
+}
+
+@media (orientation: landscape) and (max-height: 770px) {
+
+}
