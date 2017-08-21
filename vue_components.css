@@ -61,11 +61,11 @@ main {
 
 input {
   background-color: #CCC;
-  width: 230px;
+  width: 210px;
 }
 
 button {
-  margin-right: 15px;
+  margin-right: 10px;
   background-color: #FFA33E;
   border: solid 1px black;
   border-radius: 0.75em;
@@ -112,7 +112,10 @@ left: -0.5em;
   nav {
     display: none;
   }
-
+  body {
+    background-color: rgb(35, 35, 35);
+  }
+  
   #welcomeInstance {
     margin: 0;
     height: 40px;
