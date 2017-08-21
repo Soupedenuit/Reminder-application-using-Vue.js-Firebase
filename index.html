@@ -56,7 +56,8 @@
     </div>
 
     <ul>
-      <todo-item v-for="todo in toDoList" v-html="todo.text"></todo-item>
+      <todo-item v-for="(todo, key, index) in toDoList" v-bind:key="todo" v-html="todo.text">
+      </todo-item>
     <!--<li v-for="todo in toDoList" v-html="templ + todo.text"></li>-->
     </ul>
 
