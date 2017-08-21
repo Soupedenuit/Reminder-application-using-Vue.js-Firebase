@@ -159,11 +159,11 @@ left: -0.5em;
   }
 
   #toDoInstance ul {
-    position: fixed;
-    top: 100px;
+    position: relative;
+    top: 80px;
     width: 100%;
-    margin-top: 0;
-    margin-bottom: 100px;
+    margin-top: 10px;
+    margin-bottom: 80px;
     background-color: rgb(25, 25, 25);
     z-index: 1;
     overflow-y: scroll;
