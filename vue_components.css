@@ -1,14 +1,15 @@
 body {
   background-color: rgb(35, 35, 35);
-  color: #CCC; /*rgb(175,175,175);*/
+  color: #cccccc; /*rgb(175,175,175);*/
   font-family: 'Open Sans', 'Poiret One';
   margin: 0;
   padding: 0;
+  z-index: 5;
 }
 
 nav {
   margin: 0 0 auto 0;
-  background-color: rgba(30, 30, 30, 0.8);
+  background-color: rgba(25, 25, 25, 0.8);
   color: #FFA33E;
   height: 60px;
   position: fixed;
@@ -16,7 +17,7 @@ nav {
   width: 100%;
   box-shadow: 0 4px 8px 2px rgba(0, 0, 0, 0.19), 0 6px 20px 2px rgba(0, 0, 0, 0.20);
   border-bottom: 1px solid black;
-  z-index: 1
+  z-index: 100;
 }
 
 h1, p {
@@ -43,9 +44,12 @@ main {
   flex-direction: column;
   align-items: center;
   margin-top: 50px;
-  background-color: rgb(30, 30, 30);
-  border: 2px solid black;
-  width: 350px;
+  background-color: rgb(25, 25, 25);
+  border: 1px solid black;
+  width: 380px;
+  /*max-height: 70%;*/
+  /*box-shadow: 0 4px 8px 2px rgba(0, 0, 0, 0.19), 0 6px 20px 2px rgba(0, 0, 0, 0.20); */
+  overflow-y:auto;
   zoom: 1.5;
   -moz-transform: scale(1.5);
   -moz-transform-origin: 0 0;
@@ -103,14 +107,67 @@ left: -0.5em;
 
 }
 
-@media (max-width: 219px) {
+
+@media (max-height: 600px) {
   nav {
-    height: 120px;
+    display: none;
   }
+
   #welcomeInstance {
-    margin-top: 130px;
+    margin: 0;
+    height: 50px;
+    padding: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgb(35, 35, 35);
+    z-index: 15;
+    /*left: 50%;
+    transform: translate(-50%, 0); */
+  }
+
+  #welcomeInstance p {
+    color: #FFA33E;
+    font-weight: bold;
+  }
+
+  #toDoInstance {
+    display: flex;
+    margin-top: 40px;
+    align-items: center;
+    width: 100%;
+    max-height: none;
+    overflow-y: auto;
+    zoom: 1.2;
+    -moz-transform: scale(1.2);
+    -moz-transform-origin: 0 0;
+  }
+
+  #toDoInstance p {
+    margin-top: 10px;
+  }
+
+  .container {
+    position: fixed;
+    height: 80px;
+    margin-top: 0;
+    margin-bottom: 0;
+    top: 40px;
+    z-index: 10;
+    background-color: rgb(25, 25, 25);
+  }
+
+  #toDoInstance > ul {
+    position: relative;
+    top: 80px;
+    margin-top: 0;
+    margin-bottom: 100px;
+    background-color: rgb(25, 25, 25);
+    z-index: 1;
+    overflow-y: scroll;
   }
 }
+
 
 @media (max-width: 770px) {
   #sessionTimeComponent, #todayDateInstance {
@@ -118,9 +175,11 @@ left: -0.5em;
   }
 }
 
+
 @media (orientation: landscape) and (max-width: 770px) {
 
 }
+
 
 @media (orientation: landscape) and (max-height: 770px) {
 
