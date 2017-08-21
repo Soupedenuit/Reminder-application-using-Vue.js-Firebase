@@ -7,6 +7,10 @@ body {
   z-index: 5;
 }
 
+* {
+    -webkit-overflow-scrolling: touch;
+}
+
 nav {
   margin: 0 0 auto 0;
   background-color: rgba(25, 25, 25, 0.8);
@@ -163,10 +167,10 @@ left: -0.5em;
 
   #toDoInstance ul {
     position: relative;
-    top: 110px;
+    top: 105px;
     width: 100%;
-    margin-top: 10px;
-    margin-bottom: 80px;
+    margin-top: 0;
+    margin-bottom: 105px;
     background-color: rgb(25, 25, 25);
     z-index: 1;
     overflow-y: scroll;
