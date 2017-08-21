@@ -132,8 +132,8 @@ left: -0.5em;
   }
 
   #toDoInstance {
-    display: flex;
-    margin-top: 40px;
+    display: fixed;
+    top: 40px;
     align-items: center;
     width: 100%;
     max-height: none;
@@ -159,11 +159,11 @@ left: -0.5em;
   }
 
   #toDoInstance ul {
-    position: relative;
-    top: 90px;
+    position: fixed;
+    top: 100px;
     width: 100%;
     margin-top: 0;
-    margin-bottom: 75px;
+    margin-bottom: 100px;
     background-color: rgb(25, 25, 25);
     z-index: 1;
     overflow-y: scroll;
