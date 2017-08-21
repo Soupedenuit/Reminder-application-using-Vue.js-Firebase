@@ -150,6 +150,7 @@ left: -0.5em;
   .container {
     position: fixed;
     height: 70px;
+    width: 100%;
     margin-top: 0;
     margin-bottom: 0;
     top: 40px;
@@ -159,7 +160,8 @@ left: -0.5em;
 
   #toDoInstance ul {
     position: relative;
-    top: 75px;
+    top: 90px;
+    width: 100%;
     margin-top: 0;
     margin-bottom: 75px;
     background-color: rgb(25, 25, 25);
