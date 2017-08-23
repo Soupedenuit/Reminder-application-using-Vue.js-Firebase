@@ -54,9 +54,13 @@ main {
   /*max-height: 70%;*/
   /*box-shadow: 0 4px 8px 2px rgba(0, 0, 0, 0.19), 0 6px 20px 2px rgba(0, 0, 0, 0.20); */
   overflow-y:auto;
-  zoom: 1.5;
-  -moz-transform: scale(1.5);
-  -moz-transform-origin: 0 0;
+  zoom: 1.4; /* old school */
+  -webkit-transform: scale(1.4); /* Chrome, Safari, Opera */
+  -webkit-transform-origin: top center;
+  -ms-transform: scale(1.4); /* IE 9 */
+  -ms-transform-origin: top center;
+  -moz-transform: scale(1.4); /* Firefox */
+  -moz-transform-origin: top center;
 }
 
 #toDoInstance p {
@@ -104,18 +108,33 @@ left: -0.5em;
   color: #fff;
 }
 
+#logo1 {
+  background-color: none;
+  position: fixed;
+  top: 80px;
+  left: 20px;
+}
 
-/* MEDIA QUERIES:  */
+
+
+/****************************************************** 
+MEDIA QUERIES:
+******************************************************/
 
 @media (orientation: landscape) {
 
 }
 
 
-@media (max-height: 768px) {
+@media (max-height: 770px), (max-width: 770px) {
   nav {
     display: none;
   }
+  
+  #logo1 {
+    display: none;
+  }
+  
   body {
     background-color: rgb(35, 35, 35);
   }
@@ -145,9 +164,13 @@ left: -0.5em;
     width: 100%;
     max-height: none;
     overflow-y: auto;
-    zoom: 1.0;
-    -moz-transform: scale(1.0);
-    -moz-transform-origin: 0 0;
+    zoom: 1.0; /* old school */
+    -webkit-transform: scale(1.0); /* Chrome, Safari, Opera */
+    -webkit-transform-origin: top center;
+    -ms-transform: scale(1.0); /* IE 9 */
+    -ms-transform-origin: top center;
+    -moz-transform: scale(1.0); /* Firefox */
+    -moz-transform-origin: top center;
   }
 
   #toDoInstance p {
