@@ -54,7 +54,7 @@ main {
   /*max-height: 70%;*/
   /*box-shadow: 0 4px 8px 2px rgba(0, 0, 0, 0.19), 0 6px 20px 2px rgba(0, 0, 0, 0.20); */
   overflow-y:auto;
-  zoom: 1.4; /* old school */
+  zoom: 1.0; /* old school, works in Chrome */
   -webkit-transform: scale(1.4); /* Chrome, Safari, Opera */
   -webkit-transform-origin: top center;
   -ms-transform: scale(1.4); /* IE 9 */
