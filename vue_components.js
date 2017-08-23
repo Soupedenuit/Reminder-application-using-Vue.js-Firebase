@@ -72,9 +72,9 @@ var toDoInstance = new Vue({
     temp_1: '<button type="button" class="del" onclick="deleteItem(0)">x</button>',
     temp_2: '<input type="checkbox" title="done" class="crossout" id="checkbox' + 0 + '" onclick="crossOutItem(' + 0 + ')"/>',
     toDoList: [
-      { id: 0, text: '<button type="button" class="del" onclick="deleteItem(0)">x</button><span id="item' + 0 + '">learn Vue.js</span><input type="checkbox" title="done" class="crossout" id="checkbox' + 0 + '" onclick="crossOutItem(' + 0 + ')"/>' },
-      { id: 1, text: '<button type="button" class="del" onclick="deleteItem(1)">x</button><span id="item' + 1 + '">learn MongoDB</span><input type="checkbox" title="done" class="crossout" id="checkbox' + 1 + '" onclick="crossOutItem(' + 1 + ')" checked/>' },
-      { id: 2, text: '<button type="button" class="del" onclick="deleteItem(2)">x</button><span id="item' + 2 + '">learn Kung Fu</span><input type="checkbox" title="done" class="crossout" id="checkbox' + 2 + '" onclick="crossOutItem(' + 2 + ')"/>' }
+      { id: 0, text: '<button type="button" class="del" onclick="deleteItem(0)">x</button><span id="item' + 0 + '">learn Vue.js</span><input type="checkbox" title="done" class="crossout" id="checkbox' + 0 + '" onclick="crossOutItem(' + 0 + ')" />' },
+      { id: 1, text: '<button type="button" class="del" onclick="deleteItem(1)">x</button><span id="item' + 1 + '">learn MongoDB</span><input type="checkbox" title="done" class="crossout" id="checkbox' + 1 + '" onclick="crossOutItem(' + 1 + ')" />' },
+      { id: 2, text: '<button type="button" class="del" onclick="deleteItem(2)">x</button><span id="item' + 2 + '">learn Kung Fu</span><input type="checkbox" title="done" class="crossout" id="checkbox' + 2 + '" onclick="crossOutItem(' + 2 + ')" />' }
     ],
     project: '<p>a To-Do app project (work in progress). Try&nbspit&nbspout!</p>'
   }
