@@ -103,7 +103,7 @@ document.getElementById("toDoItem").addEventListener("click", function() {
 var itemCounter = 3;
 document.getElementById("toDoItem").addEventListener("click", function() {
   var y = itemCounter;
-  var newItem = '<button type="button" title="delete" class="del" onclick="deleteItem(' + y + ')">x</button><button type="button" title="move up" class="up" onclick="moveUp(' + y + ')">↑</button><span id="item' + y + '">' + addToList.value + '</span><input type="checkbox" title="done" class="crossout" id="checkbox' + y + '" onclick="crossOutItem(' + y + ')"/>';
+  var newItem = '<button type="button" title="delete" class="del" onclick="deleteItem(' + y + ')">x</button><button type="button" title="move up" class="up" onclick="moveUp(' + y + ')">↑</button><input type="checkbox" title="done" class="crossout" id="checkbox' + y + '" onclick="crossOutItem(' + y + ')"/><span id="item' + y + '">' + addToList.value + '</span>';
   toDoInstance.toDoList.push({ id: y, text: newItem });
   addToList.value = '';
   itemCounter++;
