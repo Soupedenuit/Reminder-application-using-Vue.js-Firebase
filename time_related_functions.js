@@ -137,11 +137,11 @@ var sessionTime = function() {
   }
 
   else if ( diffInMinutes < 1440 ) {
-    text = text + `This session has been open for ${diffInHours} ${hours} ${minAfterHours} ${mins} and ${secsAfterMinutes} ${secs}`;
+    text = text + `This session has been open for<br /> ${diffInHours} ${hours} ${minAfterHours} ${mins} and ${secsAfterMinutes} ${secs}`;
   }
 
   else {
-    text = text + `This session has been open for ${diffInDays} ${days} ${hoursAfterDays} ${hours} ${minAfterHours} ${mins} and ${secsAfterMinutes} ${secs}`;
+    text = text + `This session has been open for<br /> ${diffInDays} ${days} ${hoursAfterDays} ${hours} ${minAfterHours} ${mins} and ${secsAfterMinutes} ${secs}`;
   }
 
   return text;
