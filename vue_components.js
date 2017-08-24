@@ -1,6 +1,6 @@
-/**********************************************************
+/******************************************************
  Composing with Vue Components - session-time custom:
-**********************************************************/
+******************************************************/
 
 Vue.component('session-time', {
   //props: ['alpha'],
@@ -24,9 +24,9 @@ var sessionTimeComponent = new Vue({
 });
 
 
-/**********************************************************
+/******************************************************
  Vue Instances (misc):
-**********************************************************/
+******************************************************/
 
 var todayDateInstance = new Vue({
   el: '#todayDateInstance',
@@ -47,9 +47,9 @@ var welcomeInstance = new Vue({
 });
 
 
-/**********************************************************
+/******************************************************
  TO DO LIST (Vue.js component and instance):
-**********************************************************/
+******************************************************/
 
 // THIS DOES NOT WORK:
 Vue.component('todo-item', {
@@ -72,18 +72,23 @@ var toDoInstance = new Vue({
     temp_1: '<button type="button" class="del" onclick="deleteItem(0)">x</button>',
     temp_2: '<input type="checkbox" title="done" class="crossout" id="checkbox' + 0 + '" onclick="crossOutItem(' + 0 + ')"/>',
     toDoList: [
-      { id: 0, text: '<button type="button" class="del" onclick="deleteItem(0)">x</button><span id="item' + 0 + '">learn Vue.js</span><input type="checkbox" title="done" class="crossout" id="checkbox' + 0 + '" onclick="crossOutItem(' + 0 + ')" />' },
-      { id: 1, text: '<button type="button" class="del" onclick="deleteItem(1)">x</button><span id="item' + 1 + '">learn MongoDB</span><input type="checkbox" title="done" class="crossout" id="checkbox' + 1 + '" onclick="crossOutItem(' + 1 + ')" />' },
-      { id: 2, text: '<button type="button" class="del" onclick="deleteItem(2)">x</button><span id="item' + 2 + '">learn Kung Fu</span><input type="checkbox" title="done" class="crossout" id="checkbox' + 2 + '" onclick="crossOutItem(' + 2 + ')" />' }
+      { id: 0, text: '<button type="button" title="delete" class="del" onclick="deleteItem(0)">x</button><button type="button" title="move up" class="up" onclick="moveUp(0)">↑</button><input type="checkbox" title="done" class="crossout" id="checkbox' + 0 + '" onclick="crossOutItem(' + 0 + ')"/><span id="item' + 0 + '">learn Vue.js</span>' },
+      { id: 1, text: '<button type="button" title="delete" class="del" onclick="deleteItem(1)">x</button><button type="button" title="move up" class="up" onclick="moveUp(1)">↑</button><input type="checkbox" title="done" class="crossout" id="checkbox' + 1 + '" onclick="crossOutItem(' + 1 + ')"/><span id="item' + 1 + '">learn MongoDB</span>' },
+      { id: 2, text: '<button type="button" title="delete" class="del" onclick="deleteItem(2)">x</button><button type="button" title="move up" class="up" onclick="moveUp(2)">↑</button><input type="checkbox" title="done" class="crossout" id="checkbox' + 2 + '" onclick="crossOutItem(' + 2 + ')"/><span id="item' + 2 + '">learn Kung Fu</span>' }
     ],
-    project: '<p>a To-Do app project (work in progress). Try&nbspit&nbspout!</p>'
+    project: '<p>a To-Do app project (work in progress). Try&nbspit&nbspout!</p>',
+    anotherList: [
+      { name: "tony", age: 44},
+      { name: "karen", age: "also 44"},
+      { name: "mia", age: 3}
+    ]
   }
 });
 
 
-/**********************************************************
+/******************************************************
  Add items to the list (button, item, checkbox):
-**********************************************************/
+******************************************************/
 
 /* Version 1.0
 document.getElementById("toDoItem").addEventListener("click", function() {
@@ -98,16 +103,16 @@ document.getElementById("toDoItem").addEventListener("click", function() {
 var itemCounter = 3;
 document.getElementById("toDoItem").addEventListener("click", function() {
   var y = itemCounter;
-  var newItem = '<button type="button" title="delete" class="del" onclick="deleteItem(' + y + ')">x</button><span id="item' + y + '">' + addToList.value + '</span><input type="checkbox" title="done" class="crossout" id="checkbox' + y + '" onclick="crossOutItem(' + y + ')"/>';
+  var newItem = '<button type="button" title="delete" class="del" onclick="deleteItem(' + y + ')">x</button><button type="button" title="move up" class="up" onclick="moveUp(' + y + ')">↑</button><span id="item' + y + '">' + addToList.value + '</span><input type="checkbox" title="done" class="crossout" id="checkbox' + y + '" onclick="crossOutItem(' + y + ')"/>';
   toDoInstance.toDoList.push({ id: y, text: newItem });
   addToList.value = '';
   itemCounter++;
 });
 
 
-/**********************************************************
+/******************************************************
  Delete items from the list:
-**********************************************************/
+******************************************************/
 
 function deleteItem(id) {
   //var remove = this.text;
@@ -115,16 +120,37 @@ function deleteItem(id) {
     return item.id === id;
   }
   itemObj = toDoInstance.toDoList.find(itemObjectById);
-  console.log(itemObj);
+  //console.log(itemObj);
   indexOfItemObj = toDoInstance.toDoList.indexOf(itemObj);
-  var removeObj = indexOfItemObj;
-  toDoInstance.toDoList.splice(removeObj, 1);
+  toDoInstance.toDoList.splice(indexOfItemObj, 1);
 }
 
 
-/**********************************************************
+/******************************************************
+ Move items up the list:
+******************************************************/
+
+function moveUp(id) {
+  //var remove = this.text;
+  function itemObjectById(item) {
+    return item.id === id;
+  }
+  itemObj = toDoInstance.toDoList.find(itemObjectById);
+  indexOfItemObj = toDoInstance.toDoList.indexOf(itemObj);
+  if ( indexOfItemObj == 0 ) {
+    window.alert("cannot be moved up any higher");
+  }
+  else {
+  toDoInstance.toDoList.splice(indexOfItemObj,1);
+  var newIndexOfObject = indexOfItemObj - 1;
+  toDoInstance.toDoList.splice(newIndexOfObject,0,itemObj);
+  }
+}
+
+
+/******************************************************
  Cross out items on the list:
-**********************************************************/
+******************************************************/
 /* Version 1.0
 function crossOutItem(id) {
   function itemObjectById(idNum) {
@@ -165,9 +191,9 @@ function crossOutItem(id) {
 }
 
 
-/**********************************************************
+/******************************************************
  Prevent "enter" key in input field from refreshing page & instead make it click "add to list" button:
-**********************************************************/
+******************************************************/
 
 /*Version 1.0
 document.getElementById("addToList").addEventListener("keydown", function(event) {
@@ -188,9 +214,9 @@ $( document ).ready(function() { $("#addToList").keydown(function(event){
 });
 
 
-/**********************************************************
+/******************************************************
  Misc functions:
-**********************************************************/
+******************************************************/
 
 // Regex Object to get checkbox by number only:
 // (currently unused)
@@ -220,9 +246,9 @@ $( document ).ready(function() {
 });
 
 
-/**********************************************************
+/******************************************************
  CUSTOM ELEMENT method 1 (named created-ago):
-**********************************************************/
+******************************************************/
 
 var Custom1 = Object.create(HTMLElement.prototype);
 
