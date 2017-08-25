@@ -187,7 +187,6 @@ position: relative;
 
   .container {
     position: fixed;
-
     margin-top: 0;
     margin-bottom: 0;
     top: 40px;
@@ -206,10 +205,21 @@ position: relative;
 }
 
 
-@media (max-width: 415px) {
+@media (max-width: 430px) {
+  #welcomeInstance {
+    display: none;
+  }
+
+  #toDoInstance p:first-child {
+    color: #FFA33E;
+    font-weight: bold;
+    margin-top: 0;
+    font-size: 95%;
+  }
+
   #toDoInstance {
     /*display: fixed; --WRONG */
-    margin-top: 10px;
+    margin-top: 0;
     align-items: center;
     width: 90%;
     max-height: none;
@@ -222,6 +232,15 @@ position: relative;
     -moz-transform: scale(1.1); /* Firefox */
     -moz-transform-origin: top center;
   }
+
+  .container {
+    position: fixed;
+    top: 10px;
+  }
+
+  #toDoInstance ul {
+    position: relative;
+    top: 85px;
 }
 
 
