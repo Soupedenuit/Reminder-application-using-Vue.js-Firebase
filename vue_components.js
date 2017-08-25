@@ -76,7 +76,7 @@ var toDoInstance = new Vue({
       { id: 1, text: '<button type="button" title="delete" class="del" onclick="deleteItem(1)">x</button><button type="button" title="move up" class="up" onclick="moveUp(1)">↑</button><input type="checkbox" title="done" class="crossout" id="checkbox' + 1 + '" onclick="crossOutItem(' + 1 + ')"/><span id="item' + 1 + '">learn MongoDB</span>' },
       { id: 2, text: '<button type="button" title="delete" class="del" onclick="deleteItem(2)">x</button><button type="button" title="move up" class="up" onclick="moveUp(2)">↑</button><input type="checkbox" title="done" class="crossout" id="checkbox' + 2 + '" onclick="crossOutItem(' + 2 + ')"/><span id="item' + 2 + '">learn Kung Fu</span>' }
     ],
-    project: '<p>a To-Do app project (work in progress). Try&nbspit&nbspout!</p>',
+    project: '<p>To-Do app project (work in progress).</p>',
     anotherList: [
       { name: "tony", age: 44},
       { name: "karen", age: "also 44"},
