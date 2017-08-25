@@ -4,18 +4,21 @@
 
 Vue.component('session-time', {
   //props: ['alpha'],
-  template: '<p v-html="alpha"></p>',
+  template: '<p v-html="beta + alpha"></p>',
   data: function() {
-    return {alpha: 'session started!'};
+    return {beta: '', alpha: 'session opened!'};
   },
   methods: {
     created: function() {
       this.alpha = sessionTime()
+    },
+    created2: function() {
+      this.beta = displayTimeOpened()
     }
-
   },
   mounted() {
-    this.interval = setInterval(this.created, 1000)
+    this.interval = setInterval(this.created, 1000),
+    this.interval = setInterval(this.created2, 1000)
   }
 });
 
