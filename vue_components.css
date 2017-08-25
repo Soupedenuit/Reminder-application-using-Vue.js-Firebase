@@ -210,11 +210,15 @@ position: relative;
     display: none;
   }
 
+  input {
+    width: 190px;
+  }
+  
   #toDoInstance p:first-child {
     color: #FFA33E;
     font-weight: bold;
     margin-top: 0;
-    font-size: 95%;
+    font-size: 90%;
   }
 
   #toDoInstance {
