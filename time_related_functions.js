@@ -90,6 +90,16 @@ window.addEventListener('DOMContentLoaded', function() {
 }); */
 
 const sessionOpen = new Date();
+
+var displayTimeOpened = function() {
+  var hours = sessionOpen.getHours();
+  const minutes = sessionOpen.getMinutes();
+  var am_pm;
+  hours > 12 ? (hours -= 12, am_pm = "pm") : am_pm = "am";
+  const timeOpened = `${hours}:${minutes} ${am_pm}`;
+  return `Session opened at ${timeOpened}<br/>`;
+}
+
 var sessionTime = function() {
   var x = new Date();
   var diffInSeconds = Math.round((x - sessionOpen) / 1000);
@@ -129,19 +139,19 @@ var sessionTime = function() {
 
 
   if ( diffInSeconds < 60 ) {
-      text = text + `This session just opened now<br /> (${diffInSeconds} ${secs} ago)`;
+      text = text + `This session just opened ${diffInSeconds} ${secs} ago`;
     }
 
   else if ( diffInMinutes < 60 ) {
-    text = text + `This session has been open for<br /> ${diffInMinutes} ${mins} and ${secsAfterMinutes} ${secs}`;
+    text = text + `Open for ${diffInMinutes} ${mins} and ${secsAfterMinutes} ${secs}`;
   }
 
   else if ( diffInMinutes < 1440 ) {
-    text = text + `This session has been open for<br /> ${diffInHours} ${hours} ${minAfterHours} ${mins} and ${secsAfterMinutes} ${secs}`;
+    text = text + `Open for ${diffInHours} ${hours} ${minAfterHours} ${mins} and ${secsAfterMinutes} ${secs}`;
   }
 
   else {
-    text = text + `This session has been open for<br /> ${diffInDays} ${days} ${hoursAfterDays} ${hours} ${minAfterHours} ${mins} and ${secsAfterMinutes} ${secs}`;
+    text = text + `Open for ${diffInDays} ${days} ${hoursAfterDays} ${hours} ${minAfterHours} ${mins} and ${secsAfterMinutes} ${secs}`;
   }
 
   return text;
