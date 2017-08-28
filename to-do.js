@@ -223,7 +223,7 @@ function crossOutItem(id) {
 function crossOutItem(id) {
   var checkbox = document.getElementById('checkbox' + id);
   if ( checkbox.checked ) {
-    document.getElementById('item' + id).style.cssText = "text-decoration: line-through; color: green;";
+    document.getElementById('item' + id).style.cssText = "text-decoration: line-through; color: #555;";
   }
   else document.getElementById('item' + id).style.cssText = "text-decoration: none; color: #CCC;";
 }

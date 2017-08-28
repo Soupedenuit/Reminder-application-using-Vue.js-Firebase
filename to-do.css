@@ -1,6 +1,6 @@
 body {
   background-color: rgb(35, 35, 35);
-  color: #cccccc; /*rgb(175,175,175);*/
+  color: #bbb; /*rgb(175,175,175);*/
   font-family: 'Open Sans', 'Poiret One';
   margin: 0;
   padding: 0;
@@ -49,7 +49,7 @@ main {
   border: 1px solid black;
   width: 35%;
   /*max-height: 70%;*/
-  /*box-shadow: 0 4px 8px 2px rgba(0, 0, 0, 0.19), 0 6px 20px 2px rgba(0, 0, 0, 0.20); */
+  box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.19), 0 6px 20px 2px rgba(0, 0, 0, 0.20);
   overflow-y:auto;
   zoom: 1.0;  /* old school, works in Chrome */
   -webkit-transform: scale(1.4); /* Chrome, Safari, Opera */
@@ -65,7 +65,7 @@ main {
 }
 
 input {
-  background-color: #CCC;
+  background-color: #bbb;
   width: 210px;
 }
 
@@ -88,7 +88,7 @@ ul {
   margin: 10px 10px 0 10px;
   padding-left: 10px;
   position: relative;
-  left: -15px;
+  left: -11px;
 }
 
 li:first-child .up {
@@ -100,7 +100,7 @@ li:last-child .down {
 }
 
 ul li {
-  line-height: 1.4em;
+  line-height: 1.5em;
   text-indent: -6.8em;
   padding-left: 6.8em;
 }
@@ -108,6 +108,10 @@ ul li {
 ul li span {
 position: relative;
 /*left: -0.5em; */
+}
+
+#toDoInstance ul {
+  margin-bottom: 5px;
 }
 
 .crossout {
