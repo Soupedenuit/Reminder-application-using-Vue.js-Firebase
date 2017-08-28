@@ -1,6 +1,6 @@
-/***************************
+/******************************************************
  1. Today's Date function:
-***************************/
+******************************************************/
 
 var todayDate = function() {
   var months = ["January","February","March","April","May","June","July","August","September","October","November","December"
@@ -29,9 +29,9 @@ var todayDate = function() {
 };
 
 
-/***************************
+/******************************************************
  2. Elapsed Time function:
-***************************/
+******************************************************/
 
 var elapsedTimeSinceCreated = function() {
   var x = new Date();
@@ -79,9 +79,9 @@ var elapsedTimeSinceCreated = function() {
 };
 
 
-/***************************
- 3. Session Time function:
-***************************/
+/******************************************************
+ 3. Session Time functions:
+******************************************************/
 
 /*
 var sessionOpen;
@@ -89,20 +89,52 @@ window.addEventListener('DOMContentLoaded', function() {
   sessionOpen = new Date();
 }); */
 
+
 const sessionOpen = new Date();
 
-var displayTimeOpened = function() {
-  var hours = sessionOpen.getHours();
-  const minutes = sessionOpen.getMinutes();
+var displayTimeOpened = function(hh, mm) {
+  var hours;
+  var minutes;
   var am_pm;
-  hours > 12 ? (hours -= 12, am_pm = "pm") : am_pm = "am";
-  const timeOpened = `${hours}:${minutes} ${am_pm}`;
+
+  if ( hh ) {
+    hours = hh;
+  }
+  else hours = sessionOpen.getHours();
+
+  if ( mm ) {
+    minutes = mm;
+  }
+  else minutes = sessionOpen.getMinutes();
+
+  minutes == 0 ? minutes = "00" : // 0 doesn't work
+  minutes < 10 ? minutes = "0" + minutes :
+  null;
+
+  hours == 0 ? (hours = 12, am_pm = "am") :
+  hours < 12 ? (am_pm = "am") :
+  hours == 12 ? (am_pm = "pm") :
+  hours > 12 ? (hours -= 12, am_pm = "pm"):
+  null;
+  console.log("hours:  " + hours);
+  console.log("minutes:  " + minutes);
+  var timeOpened = `${hours}:${minutes} ${am_pm}`;
   return `Session opened at ${timeOpened}<br/>`;
 }
 
-var sessionTime = function() {
+var sessionTime = function(hh, mm) {
   var x = new Date();
-  var diffInSeconds = Math.round((x - sessionOpen) / 1000);
+  if ( hh ) {
+    sessionOpen.setHours(hh);
+  }
+  if ( mm ) {
+    sessionOpen.setMinutes(mm);
+    sessionOpen.getSeconds(0); // works without this line
+  }
+
+  var y = sessionOpen;
+
+  var diffInSeconds = Math.round((x - y) / 1000);
   var text = '';
 
   var diffInMinutes = Math.floor(diffInSeconds/60);
@@ -143,15 +175,15 @@ var sessionTime = function() {
     }
 
   else if ( diffInMinutes < 60 ) {
-    text = text + `Open for ${diffInMinutes} ${mins} and ${secsAfterMinutes} ${secs}`;
+    text = text + `time elapsed:  ${diffInMinutes} ${mins} and ${secsAfterMinutes} ${secs}`;
   }
 
   else if ( diffInMinutes < 1440 ) {
-    text = text + `Open for ${diffInHours} ${hours} ${minAfterHours} ${mins} and ${secsAfterMinutes} ${secs}`;
+    text = text + `time elapsed:  ${diffInHours} ${hours} ${minAfterHours} ${mins} and ${secsAfterMinutes} ${secs}`;
   }
 
   else {
-    text = text + `Open for ${diffInDays} ${days} ${hoursAfterDays} ${hours} ${minAfterHours} ${mins} and ${secsAfterMinutes} ${secs}`;
+    text = text + `time elapsed:  ${diffInDays} ${days} ${hoursAfterDays} ${hours} ${minAfterHours} ${mins} and ${secsAfterMinutes} ${secs}`;
   }
 
   return text;

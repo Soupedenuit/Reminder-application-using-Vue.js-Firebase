@@ -1,0 +1,275 @@
+body {
+  background-color: rgb(35, 35, 35);
+  color: #cccccc; /*rgb(175,175,175);*/
+  font-family: 'Open Sans', 'Poiret One';
+  margin: 0;
+  padding: 0;
+  z-index: 5;
+}
+
+nav {
+  margin: 0 0 auto 0;
+  background-color: rgba(25, 25, 25, 0.8);
+  color: #FFA33E;
+  height: 60px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  box-shadow: 0 4px 8px 2px rgba(0, 0, 0, 0.19), 0 6px 20px 2px rgba(0, 0, 0, 0.20);
+  border-bottom: 1px solid black;
+  z-index: 100;
+}
+
+h1, p {
+  text-align: center;
+}
+
+#welcomeInstance {
+  margin-top: 70px;
+}
+
+#sessionTimeComponent, #todayDateInstance {
+  font-size: 0.8em;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  /*align-items: center;*/
+  justify-content: center;
+}
+
+#toDoInstance {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 35px;
+  background-color: rgb(25, 25, 25);
+  border: 1px solid black;
+  width: 35%;
+  /*max-height: 70%;*/
+  /*box-shadow: 0 4px 8px 2px rgba(0, 0, 0, 0.19), 0 6px 20px 2px rgba(0, 0, 0, 0.20); */
+  overflow-y:auto;
+  zoom: 1.0;  /* old school, works in Chrome */
+  -webkit-transform: scale(1.4); /* Chrome, Safari, Opera */
+  -webkit-transform-origin: top center;
+  -ms-transform: scale(1.4); /* IE 9 */
+  -ms-transform-origin: top center;
+  -moz-transform: scale(1.4); /* Firefox */
+  -moz-transform-origin: top center;
+}
+
+#toDoInstance p {
+  margin-top: 20px;
+}
+
+input {
+  background-color: #CCC;
+  width: 210px;
+}
+
+button {
+  margin-right: 5px;
+  background-color: #FFA33E;
+  border: solid 1px black;
+  border-radius: 0.75em;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+button:hover, .crossout:hover {
+  cursor: pointer;
+}
+
+ul {
+  list-style-type: none;
+  margin: 10px 10px 0 10px;
+  padding-left: 10px;
+  position: relative;
+  left: -15px;
+}
+
+li:first-child .up {
+  visibility: hidden;
+}
+
+li:last-child .down {
+  visibility: hidden;
+}
+
+ul li {
+  line-height: 1.4em;
+  text-indent: -6.8em;
+  padding-left: 6.8em;
+}
+
+ul li span {
+position: relative;
+/*left: -0.5em; */
+}
+
+.crossout {
+  width: auto;
+  margin-right: 1em;
+  /*color: #fff; (cannot change color of checkbox) */
+  position: relative;
+  top: 2px;
+}
+
+#logo1 {
+  background-color: none;
+  position: fixed;
+  top: 80px;
+  left: 60px;
+  width: 150px;
+  height: 150px;
+
+}
+
+a {
+  color: #FFA33E;
+  margin-left: 10px;
+}
+
+
+
+/******************************************************
+ MEDIA QUERIES:
+******************************************************/
+
+@media (orientation: landscape) {
+
+}
+
+
+@media (max-height: 770px), (max-width: 770px) {
+  nav {
+    display: none;
+  }
+
+  #logo1 {
+    display: none;
+  }
+
+  body {
+    background-color: rgb(35, 35, 35);
+  }
+
+  #welcomeInstance {
+    margin: 0;
+    height: 40px;
+    padding: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgb(35, 35, 35);
+    z-index: 15;
+    /*left: 50%;
+    transform: translate(-50%, 0); */
+  }
+
+  #welcomeInstance p {
+    color: #FFA33E;
+    font-weight: bold;
+  }
+
+  #toDoInstance {
+    /*display: fixed; --WRONG */
+    margin-top: 20px;
+    align-items: center;
+    width: 75%;
+    max-height: none;
+    overflow-y: auto;
+    zoom: 1.1; /* old school */
+    -webkit-transform: scale(1.1); /* Chrome, Safari, Opera */
+    -webkit-transform-origin: top center;
+    -ms-transform: scale(1.1); /* IE 9 */
+    -ms-transform-origin: top center;
+    -moz-transform: scale(1.1); /* Firefox */
+    -moz-transform-origin: top center;
+  }
+
+  #toDoInstance p {
+    margin-top: 10px;
+  }
+
+  .container {
+    position: fixed;
+    margin-top: 0;
+    margin-bottom: 0;
+    top: 40px;
+    z-index: 10;
+    background-color: rgb(25, 25, 25);
+  }
+
+  #toDoInstance ul {
+    position: relative;
+    top: 105px;
+    margin: 10px 5px 105px 5px;
+    background-color: rgb(25, 25, 25);
+    z-index: 1;
+    overflow-y: scroll;
+  }
+}
+
+
+@media (max-width: 430px) {
+  #welcomeInstance {
+    display: none;
+  }
+
+  input {
+    width: 190px;
+  }
+
+  #toDoInstance p:first-child {
+    color: #FFA33E;
+    font-weight: bold;
+    margin-top: 0;
+    font-size: 90%;
+  }
+
+  #toDoInstance {
+    /*display: fixed; --WRONG */
+    margin-top: 0;
+    align-items: center;
+    width: 90%;
+    max-height: none;
+    overflow-y: auto;
+    zoom: 1.1; /* old school */
+    -webkit-transform: scale(1.1); /* Chrome, Safari, Opera */
+    -webkit-transform-origin: top center;
+    -ms-transform: scale(1.1); /* IE 9 */
+    -ms-transform-origin: top center;
+    -moz-transform: scale(1.1); /* Firefox */
+    -moz-transform-origin: top center;
+  }
+
+  .container {
+    position: fixed;
+    top: 10px;
+  }
+
+  #toDoInstance ul {
+    position: relative;
+    top: 85px;
+}
+
+
+@media (max-width: 770px) {
+  #sessionTimeComponent, #todayDateInstance {
+    display: none;
+  }
+}
+
+
+@media (orientation: landscape) and (max-width: 770px) {
+
+}
+
+
+@media (orientation: landscape) and (max-height: 770px) {
+
+}
