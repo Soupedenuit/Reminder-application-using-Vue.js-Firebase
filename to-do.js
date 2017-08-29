@@ -85,9 +85,9 @@ var toDoInstance = new Vue({
     //textitem1: 'learn MongoDB',
     //textitem2: 'learn Kung Fu',
     toDoList: [
-      { id: 0, textitem0: 'Learn Vue.js', text: '<button type="button" title="delete" class="del" onclick="deleteItem(' + 0 + ')">x</button><button type="button" title="move up" class="up" onclick="moveUp(' + 0 + ')">↑</button><button type="button" title="move down" class="down" onclick="moveDown(' + 0 + ')">↓</button><input type="checkbox" title="done" class="crossout" id="checkbox' + 0 + '" onclick="crossOutItem(' + 0 + ')"/><span id="item' + 0 + '" contenteditable="true">Learn Vue.js</span>' },
-      { id: 1, text: '<button type="button" title="delete" class="del" onclick="deleteItem(' + 1 + ')">x</button><button type="button" title="move up" class="up" onclick="moveUp(' + 1 + ')">↑</button><button type="button" title="move down" class="down" onclick="moveDown(' + 1 + ')">↓</button><input type="checkbox" title="done" class="crossout" id="checkbox' + 1 + '" onclick="crossOutItem(' + 1 + ')"/><span id="item' + 1 + '" contenteditable="true">learn MongoDB</span>' },
-      { id: 2, text: '<button type="button" title="delete" class="del" onclick="deleteItem(' + 2 + ')">x</button><button type="button" title="move up" class="up" onclick="moveUp(' + 2 + ')">↑</button><button type="button" title="move down" class="down" onclick="moveDown(' + 2 + ')">↓</button><input type="checkbox" title="done" class="crossout" id="checkbox' + 2 + '" onclick="crossOutItem(' + 2 + ')"/><span id="item' + 2 + '" contenteditable="true">learn Kung Fu</span>' }
+      { id: 0, textitem0: 'Learn Vue.js', text: '<button type="button" title="delete" class="del" onclick="deleteItem(' + 0 + ')">x</button><button type="button" title="move up" class="up" onclick="moveUp(' + 0 + ')">↑</button><button type="button" title="move down" class="down" onclick="moveDown(' + 0 + ')">↓</button><input type="checkbox" title="done" class="crossout" id="checkbox' + 0 + '" onclick="crossOutItem(' + 0 + ')"/><span id="item' + 0 + '" contenteditable="true" spellcheck="false">Learn Vue.js</span>' },
+      { id: 1, text: '<button type="button" title="delete" class="del" onclick="deleteItem(' + 1 + ')">x</button><button type="button" title="move up" class="up" onclick="moveUp(' + 1 + ')">↑</button><button type="button" title="move down" class="down" onclick="moveDown(' + 1 + ')">↓</button><input type="checkbox" title="done" class="crossout" id="checkbox' + 1 + '" onclick="crossOutItem(' + 1 + ')"/><span id="item' + 1 + '" contenteditable="true" spellcheck="false">learn MongoDB</span>' },
+      { id: 2, text: '<button type="button" title="delete" class="del" onclick="deleteItem(' + 2 + ')">x</button><button type="button" title="move up" class="up" onclick="moveUp(' + 2 + ')">↑</button><button type="button" title="move down" class="down" onclick="moveDown(' + 2 + ')">↓</button><input type="checkbox" title="done" class="crossout" id="checkbox' + 2 + '" onclick="crossOutItem(' + 2 + ')"/><span id="item' + 2 + '" contenteditable="true" spellcheck="false">learn Kung Fu</span>' }
     ],
     project: '<p>To-Do app project (work in progress).</p>',
     anotherList: [
@@ -116,7 +116,7 @@ document.getElementById("toDoItem").addEventListener("click", function() {
 var itemCounter = 3;
 document.getElementById("toDoItem").addEventListener("click", function() {
   var y = itemCounter;
-  var newItem = '<button type="button" title="delete" class="del" onclick="deleteItem(' + y + ')">x</button><button type="button" title="move up" class="up" onclick="moveUp(' + y + ')">↑</button><button type="button" title="move down" class="down" onclick="moveDown(' + y + ')">↓</button><input type="checkbox" title="done" class="crossout" id="checkbox' + y + '" onclick="crossOutItem(' + y + ')"/><span id="item' + y + '" contenteditable="true">' + addToList.value + '</span>';
+  var newItem = '<button type="button" title="delete" class="del" onclick="deleteItem(' + y + ')">x</button><button type="button" title="move up" class="up" onclick="moveUp(' + y + ')">↑</button><button type="button" title="move down" class="down" onclick="moveDown(' + y + ')">↓</button><input type="checkbox" title="done" class="crossout" id="checkbox' + y + '" onclick="crossOutItem(' + y + ')"/><span id="item' + y + '" contenteditable="true" spellcheck="false">' + addToList.value + '</span>';
   toDoInstance.toDoList.push({ id: y, text: newItem });
   addToList.value = '';
   itemCounter++;
@@ -225,7 +225,7 @@ function crossOutItem(id) {
   if ( checkbox.checked ) {
     document.getElementById('item' + id).style.cssText = "text-decoration: line-through; color: #555;";
   }
-  else document.getElementById('item' + id).style.cssText = "text-decoration: none; color: #CCC;";
+  else document.getElementById('item' + id).style.cssText = "text-decoration: none; color: #bbb;";
 }
 
 
