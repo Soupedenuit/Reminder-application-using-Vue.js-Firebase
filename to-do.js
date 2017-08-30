@@ -85,16 +85,17 @@ var toDoInstance = new Vue({
     //textitem1: 'learn MongoDB',
     //textitem2: 'learn Kung Fu',
     toDoList: [
-      { id: 0, textitem0: 'Learn Vue.js', text: '<button type="button" title="delete" class="del" onclick="deleteItem(' + 0 + ')">x</button><button type="button" title="move up" class="up" onclick="moveUp(' + 0 + ')">↑</button><button type="button" title="move down" class="down" onclick="moveDown(' + 0 + ')">↓</button><input type="checkbox" title="done" class="crossout" id="checkbox' + 0 + '" onclick="crossOutItem(' + 0 + ')"/><span id="item' + 0 + '" contenteditable="true" spellcheck="false">Learn Vue.js</span>' },
-      { id: 1, text: '<button type="button" title="delete" class="del" onclick="deleteItem(' + 1 + ')">x</button><button type="button" title="move up" class="up" onclick="moveUp(' + 1 + ')">↑</button><button type="button" title="move down" class="down" onclick="moveDown(' + 1 + ')">↓</button><input type="checkbox" title="done" class="crossout" id="checkbox' + 1 + '" onclick="crossOutItem(' + 1 + ')"/><span id="item' + 1 + '" contenteditable="true" spellcheck="false">learn MongoDB</span>' },
-      { id: 2, text: '<button type="button" title="delete" class="del" onclick="deleteItem(' + 2 + ')">x</button><button type="button" title="move up" class="up" onclick="moveUp(' + 2 + ')">↑</button><button type="button" title="move down" class="down" onclick="moveDown(' + 2 + ')">↓</button><input type="checkbox" title="done" class="crossout" id="checkbox' + 2 + '" onclick="crossOutItem(' + 2 + ')"/><span id="item' + 2 + '" contenteditable="true" spellcheck="false">learn Kung Fu</span>' }
+      { id: 0, text: '<span id="item' + 0 + '" contenteditable="true">learn Vue.js</span><span><button type="button" title="delete" class="del" onclick="deleteItem(' + 0 + ')">x</button><button type="button" title="move up" class="up" onclick="moveUp(' + 0 + ')">↑</button><button type="button" title="move down" class="down" onclick="moveDown(' + 0 + ')">↓</button><input type="checkbox" title="done" class="crossout" id="checkbox' + 0 + '" onclick="crossOutItem(' + 0 + ')"/></span>' },
+      { id: 1, text: '<span id="item' + 1 + '" contenteditable="true">learn MongoDB</span><span><button type="button" title="delete" class="del" onclick="deleteItem(' + 1 + ')">x</button><button type="button" title="move up" class="up" onclick="moveUp(' + 1 + ')">↑</button><button type="button" title="move down" class="down" onclick="moveDown(' + 1 + ')">↓</button><input type="checkbox" title="done" class="crossout" id="checkbox' + 1 + '" onclick="crossOutItem(' + 1 + ')"/></span>' },
+      { id: 2, text: '<span id="item' + 2 + '" contenteditable="true">learn Kung Fu</span><span><button type="button" title="delete" class="del" onclick="deleteItem(' + 2 + ')">x</button><button type="button" title="move up" class="up" onclick="moveUp(' + 2 + ')">↑</button><button type="button" title="move down" class="down" onclick="moveDown(' + 2 + ')">↓</button><input type="checkbox" title="done" class="crossout" id="checkbox' + 2 + '" onclick="crossOutItem(' + 2 + ')"/></span>' }
     ],
-    project: '<p>To-Do app project (work in progress).</p>',
+    project: '<p>To-Do app project.</p>',
     anotherList: [
       { name: "tony", age: 44},
       { name: "karen", age: "also 44"},
       { name: "mia", age: 3}
-    ]
+    ],
+    deletedList: []
   }
 });
 
@@ -116,7 +117,10 @@ document.getElementById("toDoItem").addEventListener("click", function() {
 var itemCounter = 3;
 document.getElementById("toDoItem").addEventListener("click", function() {
   var y = itemCounter;
-  var newItem = '<button type="button" title="delete" class="del" onclick="deleteItem(' + y + ')">x</button><button type="button" title="move up" class="up" onclick="moveUp(' + y + ')">↑</button><button type="button" title="move down" class="down" onclick="moveDown(' + y + ')">↓</button><input type="checkbox" title="done" class="crossout" id="checkbox' + y + '" onclick="crossOutItem(' + y + ')"/><span id="item' + y + '" contenteditable="true" spellcheck="false">' + addToList.value + '</span>';
+  var newItem = '<span id="item' + y + '" contenteditable="true">' + addToList.value + '</span><span><button type="button" title="delete" class="del" onclick="deleteItem(' + y + ')">x</button><button type="button" title="move up" class="up" onclick="moveUp(' + y + ')">↑</button><button type="button" title="move down" class="down" onclick="moveDown(' + y + ')">↓</button><input type="checkbox" title="done" class="crossout" id="checkbox' + y + '" onclick="crossOutItem(' + y + ')"/></span>';
+  /* Doesn't work:
+  document.getElementById("item" + y).setAttribute('title', 'just do it!');
+  */
   toDoInstance.toDoList.push({ id: y, text: newItem });
   addToList.value = '';
   itemCounter++;
@@ -133,7 +137,7 @@ document.getElementById("toDoItem").addEventListener("click", function() {
 /******************************************************
  Delete items from the list:
 ******************************************************/
-
+var deletedItemsCount = 0;
 function deleteItem(id) {
   //var remove = this.text;
   function itemObjectById(item) {
@@ -142,6 +146,15 @@ function deleteItem(id) {
   itemObj = toDoInstance.toDoList.find(itemObjectById);
   indexOfItemObj = toDoInstance.toDoList.indexOf(itemObj);
   toDoInstance.toDoList.splice(indexOfItemObj, 1);
+  console.log("itemObj:  " + toDoInstance.toDoList.itemObj);
+  toDoInstance.deletedList.push(itemObj);
+  deletedItemsCount++;
+  if ( deletedItemsCount == 1 ) {
+    document.getElementById("restore").innerHTML = deletedItemsCount + " deleted item to restore";
+  }
+  else document.getElementById("restore").innerHTML = deletedItemsCount + " deleted items to restore";
+  /* try using this?  toDoInstance.toDoList.$remove(itemObj);
+  */
 }
 
 
@@ -227,6 +240,43 @@ function crossOutItem(id) {
   }
   else document.getElementById('item' + id).style.cssText = "text-decoration: none; color: #bbb;";
 }
+
+
+/******************************************************
+ Restore deleted items:
+******************************************************/
+
+document.getElementById("restore").addEventListener("click", function() {
+  var deletedListLength = toDoInstance.deletedList.length;
+  if ( deletedListLength > 0 ) {
+    toDoInstance.deletedList.forEach(function(x) {
+      toDoInstance.toDoList.push(x);
+    });
+  }
+  toDoInstance.deletedList = [];
+  deletedItemsCount = 0;
+  if ( deletedListLength == 1 ) {
+    document.getElementById("restore").innerHTML = "the deleted item was restored";
+  }
+  else if ( deletedListLength > 1 ) {
+    document.getElementById("restore").innerHTML = "all deleted items were restored";
+  }
+  else document.getElementById("restore").innerHTML = "0 items to restore";
+});
+
+
+/******************************************************
+ Clear deleted items:
+******************************************************/
+
+document.getElementById("clear").addEventListener("click", function() {
+  var deletedListLength = toDoInstance.deletedList.length;
+  if ( deletedListLength > 0 ) {
+    toDoInstance.deletedList = [];
+    deletedItemsCount = 0;
+  }
+  document.getElementById("restore").innerHTML = "0 items to restore";
+});
 
 
 /******************************************************

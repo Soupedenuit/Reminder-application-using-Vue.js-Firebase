@@ -50,7 +50,7 @@ main {
   width: 35%;
   /*max-height: 70%;*/
   box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.19), 0 6px 20px 2px rgba(0, 0, 0, 0.20);
-  overflow-y:auto;
+  /*overflow-y:auto;*/
   zoom: 1.0;  /* old school, works in Chrome */
   -webkit-transform: scale(1.4); /* Chrome, Safari, Opera */
   -webkit-transform-origin: top center;
@@ -61,7 +61,7 @@ main {
 }
 
 #toDoInstance p {
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 input {
@@ -83,12 +83,14 @@ button:hover, .crossout:hover {
   cursor: pointer;
 }
 
-ul {
-  list-style-type: none;
-  margin: 10px 10px 0 10px;
-  padding-left: 10px;
+ol {
+  list-style-type: decimal; /*not working !!!*/
+  margin: 10px 10px 15px 10px;
+  padding: 0;
   position: relative;
-  left: -11px;
+  /*left: -11px;*/
+  /*background-color: blue;*/
+  width: 80%;
 }
 
 li:first-child .up {
@@ -99,24 +101,26 @@ li:last-child .down {
   visibility: hidden;
 }
 
-ul li {
+ol li {
+  display: flex;
+  justify-content: space-between;
   line-height: 1.5em;
-  text-indent: -6.8em;
-  padding-left: 6.8em;
+  margin-top: 4px;
+  border-bottom: 1px solid #353535;
 }
 
-ul li span {
-position: relative;
-/*left: -0.5em; */
+ol li span:nth-child(1) {
+  /*background-color: blue;*/
+  max-width: 72%;
+  padding-left: 2px;
 }
 
-#toDoInstance ul {
-  margin-bottom: 5px;
+ol li span:nth-child(2) {
+  width: 98px;
 }
 
 .crossout {
   width: auto;
-  margin-right: 1em;
   /*color: #fff; (cannot change color of checkbox) */
   position: relative;
   top: 2px;
@@ -137,6 +141,15 @@ a {
   margin-left: 10px;
 }
 
+#restore {
+  margin-bottom: 2px;
+  font-size: .8em;
+}
+
+#clear {
+  font-size: .7em;
+}
+
 
 
 /******************************************************
@@ -148,7 +161,19 @@ a {
 }
 
 
-@media (max-height: 770px), (max-width: 770px) {
+@media (max-width: 840px) {
+  #toDoInstance {
+    width: 71.4%; /* 100% at 1.4 scale */
+  }
+
+  #toDoInstance p:first-child  {
+    margin-top: 0;
+    font-size: 95%;
+  }
+}
+
+
+@media (max-height: 500px), (max-width: 770px) {
   nav {
     display: none;
   }
@@ -162,6 +187,8 @@ a {
   }
 
   #welcomeInstance {
+    display: none;
+    /*
     margin: 0;
     height: 40px;
     padding: 0;
@@ -170,23 +197,24 @@ a {
     width: 100%;
     background-color: rgb(35, 35, 35);
     z-index: 15;
+    */
     /*left: 50%;
     transform: translate(-50%, 0); */
   }
 
+  /*
   #welcomeInstance p {
     color: #FFA33E;
     font-weight: bold;
   }
+  */
 
   #toDoInstance {
     /*display: fixed; --WRONG */
-    margin-top: 20px;
+    margin-top: 0;
     align-items: center;
-    width: 75%;
-    max-height: none;
-    overflow-y: auto;
-    zoom: 1.1; /* old school */
+    width: 90.9%; /* 100% at 1.1 scale */
+    zoom: 1.0; /* old school */
     -webkit-transform: scale(1.1); /* Chrome, Safari, Opera */
     -webkit-transform-origin: top center;
     -ms-transform: scale(1.1); /* IE 9 */
@@ -195,26 +223,30 @@ a {
     -moz-transform-origin: top center;
   }
 
-  #toDoInstance p {
-    margin-top: 10px;
-  }
-
   .container {
     position: fixed;
     margin-top: 0;
     margin-bottom: 0;
-    top: 40px;
+    top: 20px;
     z-index: 10;
     background-color: rgb(25, 25, 25);
   }
 
-  #toDoInstance ul {
+
+  #toDoInstance p:first-child {
+    color: #FFA33E;
+    font-weight: bold;
+    margin-top: 0;
+    font-size: 90%;
+  }
+
+  #toDoInstance ol {
     position: relative;
-    top: 105px;
+    top: 85px;
     margin: 10px 5px 105px 5px;
+    width: 90%;
     background-color: rgb(25, 25, 25);
     z-index: 1;
-    overflow-y: scroll;
   }
 }
 
@@ -228,21 +260,12 @@ a {
     width: 190px;
   }
 
-  #toDoInstance p:first-child {
-    color: #FFA33E;
-    font-weight: bold;
-    margin-top: 0;
-    font-size: 90%;
-  }
-
   #toDoInstance {
     /*display: fixed; --WRONG */
     margin-top: 0;
     align-items: center;
     width: 90%;
-    max-height: none;
-    overflow-y: auto;
-    zoom: 1.1; /* old school */
+    zoom: 1.0; /* old school */
     -webkit-transform: scale(1.1); /* Chrome, Safari, Opera */
     -webkit-transform-origin: top center;
     -ms-transform: scale(1.1); /* IE 9 */
@@ -256,9 +279,16 @@ a {
     top: 10px;
   }
 
-  #toDoInstance ul {
+  #toDoInstance ol {
     position: relative;
-    top: 85px;
+    top: 65px;
+    width: 98%;
+    margin: 10px 5px 85px 5px;
+  }
+
+  ol li span:nth-child(1) {
+    max-width: 66%;
+  }
 }
 
 
