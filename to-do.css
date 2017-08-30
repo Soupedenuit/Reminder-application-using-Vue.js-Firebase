@@ -248,6 +248,14 @@ a {
     background-color: rgb(25, 25, 25);
     z-index: 1;
   }
+  
+   ol li span:nth-child(1) {
+    max-width: 65%;
+  }
+  
+   ol li span:nth-child(2) {
+    max-width: 200px;
+  }
 }
 
 
@@ -287,7 +295,7 @@ a {
   }
 
   ol li span:nth-child(1) {
-    max-width: 66%;
+    max-width: 60%;
   }
 }
 
