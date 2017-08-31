@@ -70,7 +70,6 @@ input {
 }
 
 button {
-  margin-right: 5px;
   margin-left: 0;
   background-color: #FFA33E;
   border: solid 1px black;
@@ -78,6 +77,13 @@ button {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+}
+
+.up, .down, .del {
+  margin-right: 5px;
+  width: 19px;
+  height: 19px;
+  padding: 0;
 }
 
 button:hover, .crossout:hover {
