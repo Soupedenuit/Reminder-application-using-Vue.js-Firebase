@@ -47,7 +47,7 @@ main {
   margin-top: 35px;
   background-color: rgb(25, 25, 25);
   border: 1px solid black;
-  width: 35%;
+  width: 40%;
   /*max-height: 70%;*/
   box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.19), 0 6px 20px 2px rgba(0, 0, 0, 0.20);
   /*overflow-y:auto;*/
@@ -71,9 +71,10 @@ input {
 
 button {
   margin-right: 5px;
+  margin-left: 0;
   background-color: #FFA33E;
   border: solid 1px black;
-  border-radius: 0.75em;
+  border-radius: 0.25em;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -90,7 +91,7 @@ ol {
   position: relative;
   /*left: -11px;*/
   /*background-color: blue;*/
-  width: 80%;
+  width: 85%;
 }
 
 li:first-child .up {
@@ -111,19 +112,24 @@ ol li {
 
 ol li span:nth-child(1) {
   /*background-color: blue;*/
-  max-width: 72%;
+  max-width: 69%;
   padding-left: 2px;
 }
 
 ol li span:nth-child(2) {
-  width: 98px;
+  width: 107px;
+  padding: 0;
+  margin: 0;
 }
 
 .crossout {
-  width: auto;
-  /*color: #fff; (cannot change color of checkbox) */
+  display: inline;
+  width: 17px;
+  height: 17px;
   position: relative;
-  top: 2px;
+  top: 4px;
+  margin: 0 5px 0 0;
+  padding: 0;
 }
 
 #logo1 {
@@ -142,8 +148,8 @@ a {
 }
 
 #restore {
-  margin-bottom: 2px;
-  font-size: .8em;
+  margin-bottom: 7px;
+  font-size: .7em;
 }
 
 #clear {
@@ -161,7 +167,7 @@ a {
 }
 
 
-@media (max-width: 840px) {
+@media (max-width: 970px) {
   #toDoInstance {
     width: 71.4%; /* 100% at 1.4 scale */
   }
@@ -248,13 +254,9 @@ a {
     background-color: rgb(25, 25, 25);
     z-index: 1;
   }
-  
-   ol li span:nth-child(1) {
-    max-width: 65%;
-  }
-  
-   ol li span:nth-child(2) {
-    width: 200px;
+
+  ol li span:nth-child(1) {
+    max-width: 66%;
   }
 }
 
@@ -295,7 +297,7 @@ a {
   }
 
   ol li span:nth-child(1) {
-    max-width: 60%;
+    max-width: 63%;
   }
 }
 
