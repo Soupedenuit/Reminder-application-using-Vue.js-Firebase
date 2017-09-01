@@ -121,7 +121,7 @@ document.getElementById("toDoItem").addEventListener("click", function() {
   document.getElementById("item" + y).setAttribute('title', 'just do it!');
   */
   toDoInstance.toDoList.push({ id: y, text: newItem });
-  addToList.value = '';
+  addToList.value = 'item';
   itemCounter++;
 });
 

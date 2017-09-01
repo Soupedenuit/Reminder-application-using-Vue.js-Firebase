@@ -1,7 +1,7 @@
 body {
   background-color: rgb(35, 35, 35);
   color: #bbb; /*rgb(175,175,175);*/
-  font-family: 'Open Sans', 'Poiret One';
+  font-family: 'Roboto', 'Open Sans', 'Poiret One';
   margin: 0;
   padding: 0;
   z-index: 5;
@@ -37,6 +37,7 @@ main {
   flex-direction: row;
   /*align-items: center;*/
   justify-content: center;
+  align-items: center;
 }
 
 #toDoInstance {
@@ -44,7 +45,7 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  margin-top: 35px;
+  margin: 35px 0 0 0;
   background-color: rgb(25, 25, 25);
   border: 1px solid black;
   width: 40%;
@@ -70,7 +71,6 @@ input {
 }
 
 button {
-  margin-left: 0;
   background-color: #FFA33E;
   border: solid 1px black;
   border-radius: 0.25em;
@@ -80,7 +80,7 @@ button {
 }
 
 .up, .down, .del {
-  margin-right: 5px;
+  margin: 0 0 2px 5px;
   width: 19px;
   height: 19px;
   padding: 0;
@@ -90,14 +90,14 @@ button:hover, .crossout:hover {
   cursor: pointer;
 }
 
-ol {
-  list-style-type: decimal; /*not working !!!*/
-  margin: 10px 10px 15px 10px;
+ul {
+  list-style-type: disc; /*does not work with Flex!*/
+  margin: 10px 5px 15px 5px;
   padding: 0;
   position: relative;
   /*left: -11px;*/
   /*background-color: blue;*/
-  width: 85%;
+  width: 90%;
 }
 
 li:first-child .up {
@@ -108,24 +108,28 @@ li:last-child .down {
   visibility: hidden;
 }
 
-ol li {
+ul li {
   display: flex;
   justify-content: space-between;
+  align-items: stretch;
   line-height: 1.5em;
-  margin-top: 4px;
+  margin: 3px 0 1px 0;
+  padding: 0;
   border-bottom: 1px solid #353535;
 }
 
-ol li span:nth-child(1) {
+ul li span:nth-child(1) {
   /*background-color: blue;*/
   max-width: 69%;
-  padding-left: 2px;
+  padding: 0 2px 0 2px;
 }
 
-ol li span:nth-child(2) {
+ul li span:nth-child(2) {
   width: 107px;
   padding: 0;
-  margin: 0;
+  margin-right: 0;
+  position: relative;
+  left: 15px;
 }
 
 .crossout {
@@ -134,7 +138,7 @@ ol li span:nth-child(2) {
   height: 17px;
   position: relative;
   top: 4px;
-  margin: 0 5px 0 0;
+  margin: 0;
   padding: 0;
 }
 
@@ -226,7 +230,7 @@ a {
     margin-top: 0;
     align-items: center;
     width: 90.9%; /* 100% at 1.1 scale */
-    zoom: 1.0; /* old school */
+    zoom: 1.0; /* old school*/
     -webkit-transform: scale(1.1); /* Chrome, Safari, Opera */
     -webkit-transform-origin: top center;
     -ms-transform: scale(1.1); /* IE 9 */
@@ -252,17 +256,28 @@ a {
     font-size: 90%;
   }
 
-  #toDoInstance ol {
+  ul {
     position: relative;
     top: 85px;
-    margin: 10px 5px 105px 5px;
-    width: 90%;
+    margin: 10px 0 105px 0;
+    width: 95%;
     background-color: rgb(25, 25, 25);
     z-index: 1;
   }
 
-  ol li span:nth-child(1) {
-    max-width: 66%;
+  ul li span:nth-child(1) {
+    max-width: 67%;
+  }
+
+  #restore {
+    margin-bottom: 9px;
+    font-size: .7em;
+    height: 20px;
+  }
+
+  #clear {
+    font-size: .7em;
+    height: 20px;
   }
 }
 
@@ -280,14 +295,9 @@ a {
     /*display: fixed; --WRONG */
     margin-top: 0;
     align-items: center;
-    width: 90%;
-    zoom: 1.0; /* old school */
-    -webkit-transform: scale(1.1); /* Chrome, Safari, Opera */
-    -webkit-transform-origin: top center;
-    -ms-transform: scale(1.1); /* IE 9 */
-    -ms-transform-origin: top center;
-    -moz-transform: scale(1.1); /* Firefox */
-    -moz-transform-origin: top center;
+    width: 91.5%; /* 100% at 1.1 scale (approx)*/
+    position: relative;
+    left: 5px;
   }
 
   .container {
@@ -295,15 +305,15 @@ a {
     top: 10px;
   }
 
-  #toDoInstance ol {
+  ul {
     position: relative;
     top: 65px;
-    width: 98%;
-    margin: 10px 5px 85px 5px;
+    width: 99%;
+    margin: 10px 0 85px 0;
   }
 
-  ol li span:nth-child(1) {
-    max-width: 63%;
+  ul li span:nth-child(1) {
+    max-width: 60%;
   }
 }
 
@@ -312,14 +322,4 @@ a {
   #sessionTimeComponent, #todayDateInstance {
     display: none;
   }
-}
-
-
-@media (orientation: landscape) and (max-width: 770px) {
-
-}
-
-
-@media (orientation: landscape) and (max-height: 770px) {
-
 }
