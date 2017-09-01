@@ -55,11 +55,11 @@
       </form>
     </div>
 
-    <ol>
+    <ul>
       <todo-item v-for="todo in toDoList" v-bind:key="todo" v-html="todo.text">
       </todo-item>
     <!--<li v-for="todo in toDoList" v-html="templ + todo.text"></li>-->
-    </ol>
+    </ul>
 
     <button type="button" id="restore">0 items to restore</button>
     <button type="button" id="clear">clear deleted items</button>
