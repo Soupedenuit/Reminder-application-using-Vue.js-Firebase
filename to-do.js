@@ -422,7 +422,7 @@ document.getElementById("switch-theme").addEventListener("click", function() {
   }
   welcomeInstance.welcomeMsg1 = "Today will be awesome!";
   document.querySelector('h1').innerHTML = "NAC Parking Services";
-  document.getElementById("logo1").src = "assets/checkmark_NAC_colour.svg";
+  document.getElementById("logo1").src = "checkmark_NAC_colour.svg";
 
   // // XX-NOT WORKING => UNRESOLVED!:
   // identify my stylesheet (to-do.css):
