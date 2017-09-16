@@ -1,7 +1,8 @@
 body {
   background-color: rgb(35, 35, 35);
   color: #bbb; /*rgb(175,175,175);*/
-  font-family: 'Open Sans', 'Poiret One';
+  font-family: 'Roboto', 'Open Sans', 'Poiret One';
+  font-weight: light 200;
   margin: 0;
   padding: 0;
   z-index: 5;
@@ -28,8 +29,20 @@ h1, p {
   margin-top: 70px;
 }
 
-#sessionTimeComponent, #todayDateInstance {
+#todayDateInstance {
+  font-size: 0.9em;
+}
+
+#sessionTimeComponent, #tempOttawa {
   font-size: 0.8em;
+}
+
+#sessionTimeComponent {
+  width: 250px;
+  margin: 0;
+  position: absolute;
+  top: 10px;
+  right: 5px;
 }
 
 main {
@@ -71,6 +84,7 @@ form {
 
 input {
   background-color: #bbb;
+  font-family: 'Roboto', 'Open Sans', 'Poiret One';
   width: 210px;
 }
 
@@ -78,17 +92,24 @@ button {
   background-color: #FFA33E;
   border: solid 1px black;
   border-radius: 0.25em;
+  font-family: 'Roboto', 'Open Sans', 'Poiret One';
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
 }
 
+
+
 .up, .down, .del {
-  margin: 0 0 2px 5px;
+
+margin: 0 0 2px 5px;
   width: 19px;
   height: 19px;
   padding: 0;
+
+font-size: 0.9em;
 }
+
 
 button:hover, .crossout:hover {
   cursor: pointer;
@@ -96,6 +117,7 @@ button:hover, .crossout:hover {
 
 ul {
   list-style-type: disc; /*does not work with Flex!*/
+  font-family: 'Rubik';
   margin: 10px 5px 15px 5px;
   padding: 0;
   position: relative;
@@ -155,16 +177,30 @@ ul li span:nth-child(2) {
 
 a {
   color: #707ac0;
+  text-decoration-color: none;
   margin-left: 10px;
 }
 
 #restore {
   margin-bottom: 7px;
   font-size: .7em;
+  cursor: default;
 }
 
 #clear {
+  margin-bottom: 7px;
   font-size: .7em;
+  cursor: default;
+}
+
+#restore:disabled {
+  color: black;
+  background-color: #777;
+}
+
+#clear:disabled {
+  color: black;
+  background-color: #777;
 }
 
 .dynamicCSS {
@@ -177,6 +213,61 @@ a {
   margin-bottom: 7px;
 }
 
+#pickColor {
+  opacity: 0;
+  width: 25px;
+  height: 25px;
+  margin-left: 10px;
+}
+
+#color-picker-wrapper {
+  background-color: #707ac0;
+  width: 25px;
+  height: 25px;
+  margin-left: 10px;
+  border: 1px solid white;
+}
+
+#tempOttawa {
+ position: fixed;
+ top: 10px;
+ left: 300px;
+}
+
+#footerScroll {
+ position: fixed;
+ color: #bbb;
+ font-size: .9em;
+ bottom: 30px;
+ left: 50px;
+}
+
+#weatherOttawa {
+  color: rgb(3,252,171); /*(255, 0, 128);*/
+  font-size: 0.8em;
+  display: inline;
+  position: fixed;
+  padding: 5px 10px 10px 10px;
+  border: 2px solid;
+  border-radius: 10%;
+  top: 80px;
+  right: 20px;
+  line-height: 1.3em;
+}
+
+#weatherOttawa:first-line {
+  text-align: center;
+  font-size: 1.1em;
+}
+
+pre {
+  font-family: 'Roboto', 'Open Sans', 'Poiret One';
+}
+
+#windDir {
+  font-size: 0.8em;
+}
+
 
 /******************************************************
  MEDIA QUERIES:
@@ -184,6 +275,13 @@ a {
 
 @media (orientation: landscape) {
 
+}
+
+
+@media (max-width: 1300px) {
+  #weatherOttawa {
+    display: none;
+  }
 }
 
 

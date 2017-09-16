@@ -1,0 +1,125 @@
+﻿<!doctype html>
+<html>
+
+<head>
+
+  <link rel="stylesheet" type="text/css" href="to-do.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poiret+One|Open+Sans|Roboto|Rubik:300">
+  <html lang="en-US">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=1">
+  <title>TO-DO Project</title>
+  <link rel="icon" type="image/png" href="assets/checkmark2.png" />
+
+</head>
+
+
+<body>
+
+
+<header>
+
+  <nav role="navigation" id="nav">
+
+    <h1 id="switch-theme">Vue.js Components</h1>
+
+    <div id="todayDateInstance">
+      <p style="margin: 0; position: fixed; top: 10px; left: 10px;" v-html="todayDate()"></p>
+    </div>
+
+    <div id="sessionTimeComponent">
+      <session-time style="text-align: left;"></session-time>
+    </div>
+
+    <div id="tempOttawa">
+      <p></p>
+    </div>
+
+  </nav>
+
+
+  <div id="welcomeInstance">
+
+    <p>{{ welcomeMsg1 }}</p>
+
+  </div>
+
+</header>
+
+
+<main>
+
+  <div id="toDoInstance">
+
+    <div class="container">
+      <p v-html="project" v-on:click="dynamicCSS = !dynamicCSS"></p>
+
+      <form action=""> <!--onkeypress="return event.keyCode != 13">-->
+      <input type="text" id="addToList" placeholder="item to add..."/>
+      <button type="button" v-bind:class="{dynamicCSS: dynamicCSS}" id="toDoItem">add to list</button>
+      </form>
+    </div>
+
+    <ul>
+      <todo-item v-for="todo in toDoList" v-bind:key="todo" v-html="todo.text">
+      </todo-item>
+    <!--<li v-for="todo in toDoList" v-html="templ + todo.text"></li>-->
+    </ul>
+
+    <p id="list-length">{{ listLength }}</p>
+    <button type="button" v-bind:class="{dynamicCSS: dynamicCSS}" id="restore" disabled>0 items to restore</button>
+    <button type="button" v-bind:class="{dynamicCSS: dynamicCSS}" id="clear" disabled>clear deleted items</button>
+
+  </div>
+
+</main>
+
+<img src="assets/checkmark2.svg" alt="logo here" id="logo1" title="if clicked, clears local storage of items"/>
+
+<!--<created-ago></created-ago>-->
+
+<aside id="weatherOttawa"></aside>
+
+<br/><br/><br/>
+
+<a
+href=
+"file://///Hugo/users/AntMenard/TODO.txt" target="_blank" id="text-link">To Do</a>
+
+<br/>
+
+<span id="color-picker-wrapper"><input type="color" id="pickColor" value="#707ac0" /></span>
+
+<footer id="footerScroll">
+  <p>Footer Scroller (click me!)</p>
+</footer>
+
+
+
+<!--<div id="created">
+  <p>This project was initiated {{ elapsedTime }} ago<br /> {{ sessionTime }}</p>
+
+<created-ago></created-ago>
+
+</div>
+-->
+
+
+<!-- SCRIPTS**************************************** -->
+
+<script type="text/javascript" src="https://unpkg.com/vue@2.4.2">
+</script>
+
+<script type="text/javascript" src="assets/jquery-3.1.1.min.js">
+</script>
+
+<script type="text/javascript" src="assets/time_related_functions.js">
+</script>
+
+<script type="text/javascript" src="to-do.js">
+</script>
+
+
+</body>
+
+</html>
