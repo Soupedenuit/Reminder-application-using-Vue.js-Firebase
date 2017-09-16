@@ -471,7 +471,7 @@ document.getElementById("switch-theme").addEventListener("click", function() {
   h1.innerHTML = "NAC PARKING SERVICES";
   h1.style.fontSize = "1.8em";
   h1.style.marginTop = "10px";
-  document.getElementById("logo1").src = "assets/checkmark_NAC_colour.svg";
+  document.getElementById("logo1").src = "checkmark_NAC_colour.svg";
 
   // // XX-NOT WORKING => UNRESOLVED!:
   // identify my stylesheet (to-do.css):
