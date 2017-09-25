@@ -97,12 +97,12 @@ var displayTimeOpened = function(hh, mm) {
   var minutes;
   var am_pm;
 
-  if ( hh ) {
+  if ( hh || hh === 0 ) {
     hours = hh;
   }
   else hours = sessionOpen.getHours();
 
-  if ( mm ) {
+  if ( mm || mm === 0 ) {
     minutes = mm;
   }
   else minutes = sessionOpen.getMinutes();
