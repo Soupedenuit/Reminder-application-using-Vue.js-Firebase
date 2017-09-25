@@ -501,8 +501,8 @@ document.getElementById("clear").addEventListener("click", function() {
 /*Version 1.0
 document.getElementById("addToList").addEventListener("keydown", function(event) {
   if ( event.keycode === 13 ) {
-    event.preventDefault();
     document.getElementById("toDoItem").click();
+    event.preventDefault();
   }
 });
 */
@@ -510,8 +510,8 @@ document.getElementById("addToList").addEventListener("keydown", function(event)
 // Version 1.1
 $( document ).ready(function() { $("#addToList").on('keydown', function(event){
     if ( event.keyCode === 13 ) {
-        event.preventDefault();
-        $("#toDoItem1").click();
+      $("#toDoItem1").click();
+      event.preventDefault();
     }
 });
 });
@@ -524,8 +524,8 @@ $( document ).ready(function() { $("#addToList").on('keydown', function(event){
 function addjQueryCheckboxMagic() {
   $( document ).ready(function() {  $("input[type=checkbox]").on('keypress', function(event){
       if ( event.keyCode === 13 ) {
-        event.preventDefault();
         $(this).click();
+        event.preventDefault();
       }
     });
   });
@@ -666,21 +666,20 @@ function prioritizeItem(y) {
 function addPrioritizeClick(y) {
   document.getElementById('item' + y).addEventListener('mousedown', function(event) {
     if ( event.which === 3 ) {
-      event.preventDefault();
       prioritizeItem(y);
+      event.preventDefault();
     }
   });
 }
 */
 
 //Using jQuery:
-/*
-function addjQueryRightClickMagic() {
+function addjQueryHighlightMagic() {
   $( document ).ready(function() {
     $("li span:first-child").on('mousedown', function(event) {
       if ( event.which === 3 ) {
-        event.preventDefault();
         $(this).css({'color': 'yellow', 'font-weight': 'bold'});
+        event.preventDefault();
       }
     });
   });
@@ -692,21 +691,23 @@ function addjQueryRightClickMagic() {
     });
   });
 }
-*/
 
+/*
 function addjQueryHighlightMagic() {
   $( document ).ready(function() {
     $('li span:first-child').on('mousedown', function() {
       $(this).on('keydown', function(event) {
         if ( event.which === 13 ) {
-          event.preventDefault();
           $(this).toggleClass('active'); // adds class active
+          event.preventDefault();
         }
       });
     });
   });
 }
+*/
 
+//Not currently used:
 function highlightItemOnHover() {
   $( document ).ready(function() {
     $('li span:first-child').hover(function() {
@@ -715,8 +716,8 @@ function highlightItemOnHover() {
   });
   $( document ).on('keydown', function(event) {
     if ( event.which === 13 ) {
-      //event.preventDefault();
       $('.active').css({'color':'yellow'}); // if hovered then it has class active
+      event.preventDefault();
     }
   });
 }
