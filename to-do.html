@@ -1,0 +1,172 @@
+﻿<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+
+  <meta charset="utf-8">
+  <title>TO-DO with Vue</title>
+  <link rel="stylesheet" type="text/css" href="to-do.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poiret+One%7COpen+Sans%7CRoboto%7CRubik:300">
+  <meta name="author" content="Tony Whomever" />
+  <meta name="description" content="a ToDo app using Vue.js">
+  <meta name="keywords" content="Vue.js, ToDo, To-Do">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=1">
+  <link id="icon" rel="icon" type="image/png" href="assets/checkmark2.png" />
+
+</head>
+
+
+<body>
+
+<header>
+
+  <nav role="navigation" id="nav">
+
+    <h1 id="NAC-theme">Vue.js Components</h1>
+
+    <div id="todayDateInstance">
+      <p style="margin: 0; position: fixed; top: 10px; left: 10px;" v-html="todayDate()"></p>
+    </div>
+
+    <div id="sessionTimeComponent">
+      <session-time style="text-align: left;"></session-time> <!-- Vue component -->
+    </div>
+
+    <!--<div id="tempOttawa">
+      <p></p>
+    </div>-->
+
+  </nav>
+
+
+  <div id="welcomeInstance">
+
+    <p>{{ welcomeMsg1 }}</p>
+
+  </div>
+
+</header>
+
+
+<main>
+
+  <div id="toDoInstance">
+
+    <div class="container">
+      <p v-html="project" v-on:click="dynamicCSS = !dynamicCSS, timeStampDynamicCSS = !timeStampDynamicCSS"></p>
+
+      <form action=""> <!--onkeypress="return event.keyCode != 13">-->
+      <input type="text" id="addToList" placeholder="item to add..."/>
+      <button type="button" v-bind:class="{dynamicCSS: dynamicCSS}" id="toDoItem1">add to list</button>
+      <button type="button" v-bind:class="{dynamicCSS: dynamicCSS}" id="toDoItem2">priority</button>
+      </form>
+
+      <div id="sort-buttons">
+        <button type="button" v-bind:class="{dynamicCSS: dynamicCSS}" id="sort-alpha">sort a-z</button>
+        <button type="button" v-bind:class="{dynamicCSS: dynamicCSS}" id="sort-new-old">sort ↑</button>
+        <button type="button" v-bind:class="{dynamicCSS: dynamicCSS}" id="sort-old-new">sort ↓</button>
+      </div>
+    </div>
+
+    <ul>
+      <todo-item v-for="todo in toDoList" v-bind:key="todo" v-html="todo.text">
+      </todo-item>
+    <!--<li v-for="todo in toDoList" v-html="templ + todo.text"></li>-->
+    </ul>
+
+    <p id="list-length" title="click to sort list (reset order)">{{ listLength }}</p>
+    <button type="button" v-bind:class="{dynamicCSS: dynamicCSS}" id="restore" disabled>0 items to restore</button>
+    <button type="button" v-bind:class="{dynamicCSS: dynamicCSS}" id="clear" disabled>clear deleted items</button>
+
+
+  </div>
+
+</main>
+
+
+<!--<img src="assets/checkmark2.svg" alt="logo here" id="logo1" title="if clicked, clears local storage of items"/>-->
+
+<svg id="logo1" viewbox="0 0 260 260"  xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+ <!-- Created with SVG-edit - http://svg-edit.googlecode.com/ -->
+ <metadata id="metadata16">image/svg+xml</metadata>
+ <g id="g8">
+  <title>if clicked, clears local storage of items</title>
+  <circle fill="#606ab0" stroke="#000000" stroke-width="10" stroke-linecap="miter" cx="110" cy="129.5" r="100" id="svg_1"/>
+  <circle fill="#80ff80" stroke="#000000" stroke-width="10" stroke-linecap="miter" cx="110" cy="129.5" r="100" id="svg_5"/>
+  <circle id="logo1-color" fill="#80ff80" stroke="#000000" stroke-width="15" stroke-linecap="miter" cx="110" cy="129.5" r="100" id="svg_6"/>
+  <polyline fill="none" stroke="#000000" stroke-width="25" id="svg_9" points="70,129.5 110,169.5 235,9.5 "/>
+ </g>
+</svg>
+
+
+<!--<created-ago></created-ago>-->
+
+<aside id="weatherOttawa"></aside>
+
+<br/><br/><br/>
+
+<a
+href=
+"file://///Hugo/users/AntMenard/TODO(js).txt" target="_blank" id="text-link">To Do</a>
+
+<br/>
+
+<span id="color-picker-wrapper"><input type="color" id="pickColor" value="#80ff80" /></span>
+
+<!--
+<div id="scroller1">
+  <p>Scroll by changing <em>left position</em> (click me!)</p>
+</div>
+<div id="scroller2">
+  <p>Scroll by using <em>transform</em> (click me!)</p>
+</div>
+-->
+
+
+<!--<div id="created">
+  <p>This project was initiated {{ elapsedTime }} ago<br /> {{ sessionTime }}</p>
+
+<created-ago></created-ago>
+
+</div>
+-->
+
+
+<!-- SCRIPTS ------------------------->
+
+<!-- Firebase App -->
+<script src="https://www.gstatic.com/firebasejs/4.9.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.9.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.9.1/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.10.0/firebase.js"></script>
+<!-- Initialize Firebase & config database -->
+<script src="firebase_config.js">
+</script>
+
+<!-- Project files -->
+
+<!--<script type="text/javascript" src="https://unpkg.com/vue@2.4.2">
+</script>-->
+
+<script type="text/javascript" src="assets/vue.min.js">
+</script>
+
+<script type="text/javascript" src="assets/jquery-3.1.1.min.js">
+</script>
+
+<script type="text/javascript" src="assets/time_related_functions.js">
+</script>
+
+<script src="to-do_firebase.js">
+</script>
+
+<script type="text/javascript" src="items(Mar19).js">
+</script>
+
+<script type="text/javascript" src="to-do.js">
+</script>
+
+
+</body>
+
+</html>
