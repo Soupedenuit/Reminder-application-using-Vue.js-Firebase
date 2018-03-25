@@ -1,22 +1,59 @@
-/******************************************************
+/*********************************************
+**********************************************
+**  Copyright (C) 2017
+**  AUTHOR:  Tony Whomever
+**   PLACE:  Ottawa, ON, Canada
+**    DATE:  September 2017
+**
+**********************************************
+*********************************************/
+"use strict";
+
+// Time related functions module:
+
+var timeRelatedFunctions = (function() {
+
+  const cachedDOM1 = {};
+
+  function cacheDOM1() {
+    cachedDOM1.colorPicker = document.getElementById('pickColor');
+  }
+
+  cacheDOM1();
+
+var monthNames = function(number) {
+  var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+  return months[number];
+};
+
+var monthNamesAbbrev = function(number) {
+  var months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  return months[number];
+};
+
+var weekdayNames = function(number) {
+  var weekdays = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+  return weekdays[number];
+};
+
+const sessionOpen = new Date();
+
+return { //returns all public methods below:
+
+/********************************************
  1. Today's Date function:
-******************************************************/
+********************************************/
 
-var todayDate = function() {
-  var months = ["January","February","March","April","May","June","July","August","September","October","November","December"
-  ];
-
-  var weekDays = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-
+todayDate: function() {
   var x = new Date();
   var day = x.getDate();
-  var weekday = weekDays[x.getDay()];
-  var month = months[x.getMonth()];
+  var weekday = weekdayNames(x.getDay());
+  var month = monthNames(x.getMonth());
   var year = x.getFullYear();
   var today = `${weekday} ${month} ${day}, ${year}`;
   // Ternary Operator in lieu of if else statement
   var weekdayNum = x.getDay();
-  var commentTemplate = '<br /><span style="font-size: 0.9em">'
+  var commentTemplate = '<br /><span style="font-size: 0.9em">';
   var comment =
   weekdayNum === 0 ? commentTemplate + 'Sundays give me the dreads</span>' :
   weekdayNum === 1 ? commentTemplate + 'Mondays suck balls</span>' :
@@ -26,16 +63,16 @@ var todayDate = function() {
   weekdayNum === 5 ? commentTemplate + 'TGIF mofos!</span>' :
   commentTemplate + 'Saturdays RULE the world!</span>';
   return today + comment;
-};
+},
 
 
-/******************************************************
+/********************************************
  2. Elapsed Time function:
-******************************************************/
+********************************************/
 
-var elapsedTimeSinceCreated = function() {
+elapsedTimeSinceCreated: function() {
   var x = new Date();
-  var creationDate = new Date(2017, 06, 24, 13, 0);
+  var creationDate = new Date(2017, 6, 24, 13);
   var diffInMinutes = Math.round((x - creationDate) / 1000 / 60);
   var text = '';
 
@@ -76,12 +113,12 @@ var elapsedTimeSinceCreated = function() {
   }
 
   return text;
-};
+},
 
 
-/******************************************************
+/********************************************
  3. Session Time functions:
-******************************************************/
+********************************************/
 
 /*
 var sessionOpen;
@@ -90,9 +127,9 @@ window.addEventListener('DOMContentLoaded', function() {
 }); */
 
 
-const sessionOpen = new Date();
+// const sessionOpen = new Date();
 
-var displayTimeOpened = function(hh, mm) {
+displayTimeOpened: function(hh, mm) {
   var hours;
   var minutes;
   var am_pm;
@@ -107,22 +144,20 @@ var displayTimeOpened = function(hh, mm) {
   }
   else minutes = sessionOpen.getMinutes();
 
-  minutes == 0 ? minutes = "00" : // 0 doesn't work
+  minutes === 0 ? minutes = "00" : // 0 doesn't work
   minutes < 10 ? minutes = "0" + minutes :
   null;
 
-  hours == 0 ? (hours = 12, am_pm = "am") :
+  hours === 0 ? (hours = 12, am_pm = "am") :
   hours < 12 ? (am_pm = "am") :
-  hours == 12 ? (am_pm = "pm") :
+  hours === 12 ? (am_pm = "pm") :
   hours > 12 ? (hours -= 12, am_pm = "pm"):
   null;
-  console.log("hours:  " + hours);
-  console.log("minutes:  " + minutes);
   var timeOpened = `${hours}:${minutes} ${am_pm}`;
   return `Session opened at ${timeOpened}<br/>`;
-}
+},
 
-var sessionTime = function(hh, mm) {
+sessionTime: function(hh, mm) {
   var x = new Date();
   if ( hh ) {
     sessionOpen.setHours(hh);
@@ -147,21 +182,21 @@ var sessionTime = function(hh, mm) {
 
   var secs;
   if ( secsAfterMinutes === 1 ) {
-    secs = " second";
+    secs = " sec"; // " second";
   }
-  else secs = " seconds";
+  else secs = " secs"; // " seconds";
 
   var mins;
   if ( minAfterHours === 1 ) {
-    mins = " minute";
+    mins = " min"; // " minute";
   }
-  else mins = " minutes";
+  else mins = " mins"; // " minutes";
 
   var hours;
   if ( hoursAfterDays === 1 ) {
-    hours = " hour";
+    hours = " hr"; // " hour";
   }
-  else hours = " hours";
+  else hours = " hrs"; // " hours";
 
   var days;
   if ( diffInDays === 1 ) {
@@ -175,23 +210,107 @@ var sessionTime = function(hh, mm) {
     }
 
   else if ( diffInMinutes < 60 ) {
-    text = text + `time elapsed:  ${diffInMinutes} ${mins} and ${secsAfterMinutes} ${secs}`;
+    text = text + `elapsed time:  ${diffInMinutes} ${mins} and ${secsAfterMinutes} ${secs}`;
   }
 
   else if ( diffInMinutes < 1440 ) {
-    text = text + `time elapsed:  ${diffInHours} ${hours} ${minAfterHours} ${mins} and ${secsAfterMinutes} ${secs}`;
+    text = text + `time elapsed:  ${diffInHours} ${hours} ${minAfterHours} ${mins} ${secsAfterMinutes} ${secs}`;
   }
 
   else {
-    text = text + `time elapsed:  ${diffInDays} ${days} ${hoursAfterDays} ${hours} ${minAfterHours} ${mins} and ${secsAfterMinutes} ${secs}`;
+    text = text + `elapsed time:  ${diffInDays} ${days} ${hoursAfterDays} ${hours} ${minAfterHours} ${mins}`;
   }
 
   return text;
-};
+},
 
-// Currently not in use:
+/*
 function go() {
   var y = setInterval(function() {
   sessionTime();
   }, 1000);
 }
+*/
+
+
+/********************************************
+ 4. Time Stamp functions:
+********************************************/
+
+timeStampItem: function(id, hh, mm) {
+  let now = new Date();
+  // for same day:
+  var hours;
+  var minutes;
+  var am_pm;
+  if ( hh || hh === 0 ) {
+    hours = hh;
+  }
+  else hours = now.getHours();
+  if ( mm || mm === 0 ) {
+    minutes = mm;
+  }
+  else minutes = now.getMinutes();
+  minutes === 0 ? minutes = "00" :
+  minutes < 10 ? minutes = "0" + minutes :
+  null;
+  hours === 0 ? (hours = 12, am_pm = "am") :
+  hours < 12 ? (am_pm = "am") :
+  hours === 12 ? (am_pm = "pm") :
+  hours > 12 ? (hours -= 12, am_pm = "pm"):
+  null;
+  // for yesterday or older:
+  var beginningOfYear = new Date(2016,11,31);
+  const daysCalc = 1000 * 60 * 60 * 24;
+  const hoursCalc = 1000 * 60 * 60;
+  var dayOfYear = Math.floor(( now - beginningOfYear ) / daysCalc);
+  var timeAdded = `<div class="timeStamp" id="timeStamp${id}-date${dayOfYear}" style="color:${cachedDOM1.colorPicker.value}">${hours}:${minutes}${am_pm}&nbsp&nbsp&nbsp&nbsp </div>`;
+  //for simple text (i.e. weather update):
+  var timeUpdated = ` ${hours}:${minutes}${am_pm}`;
+  if ( id === 'update' ) {
+    return timeUpdated;
+  }
+  else return timeAdded;
+},
+
+// Simple timestamp for standalone use
+timeStamp: function(hh, mm) {
+  let now = new Date();
+  // for same day:
+  var hours;
+  var minutes;
+  var am_pm;
+  if ( hh || hh === 0 ) {
+    hours = hh;
+  }
+  else hours = now.getHours();
+  if ( mm || mm === 0 ) {
+    minutes = mm;
+  }
+  else minutes = now.getMinutes();
+  minutes === 0 ? minutes = "00" :
+  minutes < 10 ? minutes = "0" + minutes :
+  null;
+  hours === 0 ? (hours = 12, am_pm = "am") :
+  hours < 12 ? (am_pm = "am") :
+  hours === 12 ? (am_pm = "pm") :
+  hours > 12 ? (hours -= 12, am_pm = "pm"):
+  null;
+  var timeOpened = `${hours}:${minutes}${am_pm}`;
+  return timeOpened;
+}
+
+
+}; //closes return of multiple public methods
+
+})(); // end of Module
+
+/**************************************
+***************************************
+**  Copyright (C) 2017
+**  AUTHOR:  Tony Whomever
+**   PLACE:  Ottawa, ON, Canada
+**    DATE:  September 2017
+**
+***************************************
+**************************************/
