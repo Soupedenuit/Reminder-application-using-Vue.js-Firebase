@@ -1,10 +1,23 @@
+:root {
+  --reminder-color-1: yellow;
+  --reminder-color-2: orange;
+  --reminder-color-3: red;
+  --reminder-color-4: brown;
+  --reminder-color-5: slateblue;
+}
+
 body {
+  /* position: relative; */
+  display: block;
   background-color: rgb(35, 35, 35);
   color: #bbb; /*rgb(175,175,175);*/
   font-family: 'Roboto', 'Open Sans', 'Poiret One';
   font-weight: 200;
   margin: 0;
   padding: 0;
+  width: 100vw; /*calc(100vw - 17px);*/
+  overflow: hidden;
+  overflow-y: scroll;
   z-index: 2;
 }
 
@@ -15,7 +28,7 @@ nav {
   height: 60px;
   position: fixed;
   top: 0;
-  width: 100%;
+  width: calc(100vw - 17px);
   box-shadow: 0 4px 8px 2px rgba(0, 0, 0, 0.19), 0 6px 20px 2px rgba(0, 0, 0, 0.20);
   border-bottom: 1px solid black;
   z-index: 5;
@@ -53,7 +66,10 @@ main {
   align-items: center;
 }
 
-#toDoInstance {
+#to-do-instance {
+  position: relative;
+  /* overflow: hidden; */
+  right: -100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -61,20 +77,24 @@ main {
   margin: 35px 0 0 0;
   background-color: rgb(25, 25, 25);
   border: 1px solid black;
-  width: 50%;
+  width: 65%;
   /*max-height: 70%;*/
   box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.19), 0 6px 20px 2px rgba(0, 0, 0, 0.20);
   /*overflow-y:auto;*/
-  zoom: 1.0;  /* old school, works in Chrome */
-  -webkit-transform: scale(1.3); /* Chrome, Safari, Opera */
+  zoom: 1.0;  /* IE8 and older, works in Chrome */
+  /* -webkit-transform: scale(1.3); Chrome, Safari, Opera */
+  /* -moz-transform: scale(1.3); Firefox */
+  /* -ms-transform: scale(1.3); IE 9 */
+  /* -o-transform: scale(1.3); Opera */
+  /* transform: scale(1.3); */
   -webkit-transform-origin: top center;
-  -ms-transform: scale(1.3); /* IE 9 */
-  -ms-transform-origin: top center;
-  -moz-transform: scale(1.3); /* Firefox */
-  -moz-transform-origin: top center;
+     -moz-transform-origin: top center;
+      -ms-transform-origin: top center;
+       -o-transform-origin: top center;
+          transform-origin: top center;
 }
 
-#toDoInstance p {
+#to-do-instance p {
   margin-top: 10px;
 }
 
@@ -86,6 +106,10 @@ input {
   background-color: #bbb;
   font-family: 'Roboto', 'Open Sans', 'Poiret One';
   width: 210px;
+}
+
+input:invalid {
+  background-color: #e06565;
 }
 
 button {
@@ -100,8 +124,8 @@ button {
 
 .up, .down, .del {
   margin: 0 0 2px 5px;
-  width: 19px;
-  height: 19px;
+  width: 23px; /*19px;*/
+  height: 23px; /*19px;*/
   padding: 0;
   font-size: 0.8em;
 }
@@ -119,6 +143,7 @@ ul {
   /*left: -11px;*/
   /*background-color: blue;*/
   width: 90%;
+  overflow-x: hidden;
 }
 
 li:first-child .up {
@@ -131,22 +156,30 @@ li:last-child .down {
 
 ul li {
   display: flex;
+  position: relative;
+  left: 110%;
   justify-content: space-between;
   align-items: stretch;
   line-height: 1.5em;
+  font-size: 1.15em;
   margin: 3px 0 1px 0;
   padding: 0;
   border-bottom: 1px solid #353535;
   color: #ddd;
+  -webkit-transition: transform 800ms ease;
+  -moz-transition: transform 800ms ease;
+  -o-transition: transform 800ms ease;
+  transition: transform 800ms ease;
 }
 
 ul li span:nth-child(1) {
   width: 70%;
   padding: 0 2px 0 0;
+  outline: none;
 }
 
 ul li span:nth-child(2) {
-  width: 160px; /* 107px */
+  width: 180px; /* 160px */
   padding: 0;
   margin-right: 0;
   position: relative;
@@ -154,7 +187,7 @@ ul li span:nth-child(2) {
 }
 
 .crossout {
-  display: inline;
+  /* display: inline; */
   width: 17px;
   height: 17px;
   position: relative;
@@ -206,19 +239,35 @@ a {
   margin-bottom: 7px;
 }
 
-#pickColor {
-  opacity: 0;
-  width: 25px;
-  height: 25px;
-  margin-left: 10px;
-}
-
 #color-picker-wrapper {
-  background-color: #80ff80; /*#FFA33E;*/
-  width: 25px;
-  height: 25px;
-  margin-left: 10px;
-  border: 1px solid white;
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  margin: 0;
+  padding: 0;
+  font-size: 1.8em;
+  color: #80ff80;
+  background-color: transparent; /* #80ff80; #FFA33E; */
+  border-style: none;
+  outline: none;
+  /* transform: scale(1.1); */
+  border: none; /* 1px solid white; */
+  cursor: pointer;
+} 
+
+#pick-color {
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  cursor: pointer;
+  /* z-index: 2; */
 }
 
 #tempOttawa {
@@ -290,7 +339,7 @@ pre {
   padding-top: 0.2em;
   font-size: 0.6em;
   font-weight: normal;
-  width: 60px;
+  width: 70px; /*60px;*/
   color: #80ff80; /*#FFA33E;*/
   float: left;
 }
@@ -335,6 +384,374 @@ pre {
 }
 */
 
+/* AUTHENTICATION */
+
+#sign-in-button {
+  position: absolute;
+  /* display: inline; */
+  right: 280px;
+  padding: 0;
+  margin: 0;
+  /* top: 5px; */
+  bottom: 15px;
+  width: 31px;
+  height: 31px;
+  font-size: 1.8em;
+  color: #80ff80;
+  background-color: transparent;
+  border-style: none;
+  outline: none;
+  transform: scale(1.1);
+}
+
+#sign-in-text {
+  position: absolute;
+  display: inline;
+  right: 280px;
+  padding: 0;
+  margin: 0;
+  /* top: 5px; */
+  bottom: 2px;
+  /* width: 31px; */
+  /* height: 31px; */
+  font-size: 0.75em;
+}
+
+#sign-in-button:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+#sign-in-button:disabled {
+  cursor: default;
+  color: #666;
+}
+
+#auth-container {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  top: -300px;
+  right: 280px;
+  height: 250px;
+  width: 250px;
+  color: rgb(3,252,171);
+  background-color: rgba(25, 25, 25);
+  border: 2px solid;
+  border-radius: 10%;
+  z-index: 4;
+  -webkit-transition: transform 0.5s ease;
+     -moz-transition: transform 0.5s ease;
+       -o-transition: transform 0.5s ease;
+          transition: transform 0.5s ease;
+}
+
+.credentials {
+  width: 165px;
+}
+
+#login-btn, #guest-btn {
+  border: 1px solid black;
+  width: 50px;
+  height: 35px;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+      -ms-appearance: none;
+          appearance: none;
+}
+
+/*   NEW Nov 2018: items colors   */
+
+/* li span[data-text-color='1'] {
+  color: yellow;
+}
+
+li span[data-text-color='2'] {
+  color: fuchsia;
+}
+
+li span[data-text-color='3'] {
+  color: red;
+} */
+
+[data-text-color='1'] {
+  color: var(--reminder-color-1);
+}
+
+[data-text-color='2'] {
+  color: var(--reminder-color-2);
+}
+
+[data-text-color='3'] {
+  color: var(--reminder-color-3);
+}
+
+[data-text-color='4'] {
+  color: var(--reminder-color-4);
+}
+
+[data-text-color='5'] {
+  color: var(--reminder-color-5);
+}
+
+
+/**************************************
+ CLASSES ADDED/REMOVED WITH JS
+**************************************/
+
+.translateY-slider-login {
+  -webkit-transform: translateY(370px); /* Chrome, Safari, Opera */
+  -moz-transform: translateY(370px); /* Firefox */
+  -ms-transform: translateY(370px); /* IE 9 */
+  -o-transform: translateY(370px); /* Opera */
+  transform: translateY(370px);
+}
+
+/* .translateX-slider-items {
+  -webkit-transform: scale(1.3) translateX(calc(-100vw / 1.3));
+  -moz-transform: scale(1.3) translateX(calc(-100vw / 1.3));
+  -ms-transform: scale(1.3) translateX(calc(-100vw / 1.3));
+  -o-transform: scale(1.3) translateX(calc(-100vw / 1.3));
+  transform: scale(1.3) translateX(calc(-100vw / 1.3));
+} */
+
+.translateX-slider-items {
+  -webkit-transform: translateX(calc(-100vw)); /* Chrome, Safari, Opera */
+  -moz-transform: translateX(calc(-100vw)); /* Firefox */
+  -ms-transform: translateX(calc(-100vw)); /* IE 9 */
+  -o-transform: translateX(calc(-100vw)); /* Opera */
+  transform: translateX(calc(-100vw));
+}
+
+.items-container-transitions-on {
+  -webkit-transition: transform 300ms ease;
+  -moz-transition: transform 300ms ease;
+  -o-transition: transform 300ms ease;
+  transition: transform 300ms ease;
+}
+
+.items-container-transitions-off {
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+}
+
+.translateX-slider-li {
+  -webkit-transform: translateX(-110%); /* Chrome, Safari, Opera */
+     -moz-transform: translateX(-110%); /* Firefox */
+     -ms-transform: translateX(-110%); /* IE 9 */
+       -o-transform: translateX(-110%); /* Opera */
+       transform: translateX(-110%);
+}
+
+.opacity-zero {
+  /* display: none; */
+  opacity: 0;
+  -webkit-transition: opacity 0.5s ease;
+     -moz-transition: opacity 0.5s ease;
+     -o-transition: opacity 0.5s ease;
+          transition: opacity 0.5s ease;
+}
+
+.display-none {
+  display: none;
+}
+
+
+/**************************************
+  Vue Component: reminder-box.Vue.js
+**************************************/
+
+  #reminder-box, #reminder-popup {
+  position: fixed;
+  /* width: 200px;
+  height: 225px; */
+  background-color: black;
+  z-index: 7;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  box-shadow: 0 4px 8px 2px rgba(0, 0, 0, 0.19), 0 6px 20px 2px rgba(0, 0, 0, 0.20);
+  border: 1px solid black;
+  text-align: center;
+  padding: 15px 0 0 0;
+  /* opacity: 1; */
+}
+
+#reminder-box {
+  width: 200px;
+  height: 225px;
+}
+
+#reminder-box > form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  /* background-color: #777; */
+  /* border: 1px solid red; */
+}
+
+.reminder-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  height: 30%;
+  /* background-color: #555; */
+  /* border: 1px solid yellow; */
+}
+
+#reminder-time-input {
+  width: 100px;
+  height: 25px;
+}
+
+/* #reminder-colors {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 150px;
+} */
+
+/* #reminder-colors > button {
+  width: 25px;
+  height: 25px;
+} */
+
+/* radio inputs */
+#reminder-colors input {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  cursor: pointer;
+  /* Hide the default radio button */
+  opacity: 0;
+}
+
+.radio-container {
+  position: relative;
+}
+
+.radio-container > input {
+  width: 25px;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  margin: 0;
+  border-radius: 50%;
+  /* background-color: #777; */
+  /* cursor: pointer; */
+  pointer-events: none;
+  /* opacity: 1; */
+}
+
+.checkmark[data-text-color='1'] {
+  background-color: var(--reminder-color-1);
+}
+
+.checkmark[data-text-color='2'] {
+  background-color: var(--reminder-color-2);
+}
+
+.checkmark[data-text-color='3'] {
+  background-color: var(--reminder-color-3);
+}
+
+.checkmark[data-text-color='4'] {
+  background-color: var(--reminder-color-4);
+}
+
+.checkmark[data-text-color='5'] {
+  background-color: var(--reminder-color-5);
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.radio-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Add border to checkmark when checked */
+.radio-container input:checked ~ .checkmark {
+  border: 2px solid white;
+  top: -2px;
+  left: -2px;
+}
+
+/* Style the indicator (dot/circle) */
+.radio-container .checkmark:after {
+ 	top: 6px;
+	left: 6px;
+	width: 9px;
+	height: 9px;
+	border-radius: 50%;
+	background: black;
+}
+
+#reminder-box-btn {
+  width: 60px;
+  height: 35px;
+}
+
+.close-btn {
+  position: absolute;
+  bottom: 6px;
+  right: 6px;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  font-size: 0.9em;
+  color: #ccc;
+  background-color: transparent;
+  border-style: none;
+  outline: none;
+  cursor: pointer;
+}
+
+#reminder-body-fader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  opacity: 0.4;
+  background-color: black;
+  width: 100vw;
+  height: 100vh;
+  z-index: 6;
+}
+
+#reminder-popup {
+  width: 600px;
+  height: 400px;
+  max-width: 80vw; 
+  max-height: 70vh;
+}
+
+#reminder-popup h1 {
+  margin-bottom: 30px;
+}
+
 
 /********************************************
  MEDIA QUERIES:
@@ -353,8 +770,8 @@ pre {
 
 
 @media (max-width: 1200px) {
-  #toDoInstance {
-    width: 60%;
+  #to-do-instance {
+    width: 70%;
   }
 
   #logo1 {
@@ -366,11 +783,20 @@ pre {
 
 
 @media (max-width: 970px) {
-  #toDoInstance {
-    width: 76.9%; /* 100% at 1.3 scale */
+
+  #to-do-instance {
+    width: 100vw; /* 76.9%; /* 100% at 1.3 scale */
   }
 
-  #toDoInstance p:first-child  {
+  /* nav {
+    width: calc(100vw * 1.15 - 17px);
+  } */
+
+  /* body {
+    width: 130vw;
+  } */
+
+  #to-do-instance p:first-child  {
     margin-top: 0;
     font-size: 95%;
   }
@@ -378,16 +804,39 @@ pre {
   #text-link, #logo1 {
     display: none;
   }
+
+  #sessionTimeComponent {
+    display: none;
+  }
+
+  #sign-in-button {
+    right: 10px;
+  }
+
+  #sign-in-text {
+    right: 10px;
+  }
+
+  #color-picker-wrapper {
+    display: none;
+  }
+}
+
+
+@media (max-width: 850px) {
+  
+  #todayDateInstance {
+    display: none;
+  }
 }
 
 
 @media (max-height: 500px), (max-width: 770px) {
-  nav {
-    display: none;
-  }
-
-  #logo1 {
-    display: none;
+  
+  h1 {
+    text-align: left;
+    margin-left: 15px;
+    font-size: 1em;
   }
 
   body {
@@ -396,39 +845,28 @@ pre {
 
   #welcomeInstance {
     display: none;
-    /*
-    margin: 0;
-    height: 40px;
-    padding: 0;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background-color: rgb(35, 35, 35);
-    z-index: 4;
-    */
-    /*left: 50%;
-    transform: translate(-50%, 0); */
   }
 
-  /*
-  #welcomeInstance p {
-    color: #FFA33E;
-    font-weight: bold;
+  #to-do-instance p:first-child  {
+    display: none;
   }
-  */
 
-  #toDoInstance {
+  #to-do-instance {
     display: flex;
-    margin-top: 0;
+    margin-top: 63px;
     align-items: center;
     width: 90.9%; /* 100% at 1.1 scale */
-    zoom: 1.0; /* old school*/
-    -webkit-transform: scale(1.1); /* Chrome, Safari, Opera */
+    /* zoom: 1.0;
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    transform: scale(1.1); */
     -webkit-transform-origin: top center;
-    -ms-transform: scale(1.1); /* IE 9 */
-    -ms-transform-origin: top center;
-    -moz-transform: scale(1.1); /* Firefox */
     -moz-transform-origin: top center;
+    -ms-transform-origin: top center;
+    -o-transform-origin: top center;
+    transform-origin: top center;
   }
 
   .container {
@@ -440,12 +878,12 @@ pre {
     background-color: rgb(25, 25, 25);
   }
 
-  #toDoInstance p:first-child {
-    color: #80ff80; /*#FFA33E;*/
+  /* #to-do-instance p:first-child {
+    color: #80ff80; 
     font-weight: bold;
     margin-top: 0;
     font-size: 90%;
-  }
+  } */
 
   ul {
     position: relative;
@@ -472,18 +910,21 @@ pre {
 
 
 @media (max-width: 600px) {
-
-  #toDoInstance {
-    margin-top: 0;
+  #to-do-instance {
+    /* margin-top: 0; */
     align-items: center;
     width: 100%;
-    zoom: 1.0; /* old school*/
-    -webkit-transform: scale(1.0); /* Chrome, Safari, Opera */
+    /* zoom: 1.0;
+    -webkit-transform: scale(1.0);
+    -moz-transform: scale(1.0);
+    -ms-transform: scale(1.0);
+    -o-transform: scale(1.0);
+    transform: scale(1.0); */
     -webkit-transform-origin: top center;
-    -ms-transform: scale(1.0); /* IE 9 */
-    -ms-transform-origin: top center;
-    -moz-transform: scale(1.0); /* Firefox */
     -moz-transform-origin: top center;
+    -ms-transform-origin: top center;
+    -o-transform-origin: top center;
+    transform-origin: top center;
   }
 
   .top, .bottom {
@@ -495,37 +936,46 @@ pre {
   }
 
   ul li span:nth-child(2) {
-    width: 110px; /* instead of 160px */
+    width: 124px; /*110px;*/  /* instead of 160px */
   }
 
   li {
     font-size: .9em;
   }
+
+  /* #auth-container {
+    right: 50%;
+    transform: translate(50%, 370px);
+    -webkit-transform: translate(50%, 370px);
+  } */
+
+  .translateY-slider-login {
+    -webkit-transform: translate(50%, 370px);; /* Chrome, Safari, Opera */
+    -moz-transform: translate(50%, 370px);; /* Firefox */
+    -ms-transform: translate(50%, 370px);; /* IE 9 */
+    -o-transform: translate(50%, 370px);; /* Opera */
+    transform: translate(50%, 370px);;
+    right: 50%;
+  }
 }
 
 
 @media (max-width: 430px) {
-  #welcomeInstance {
+  /* #welcomeInstance {
     display: none;
-  }
+  } */
 
   input {
     width: 190px;
   }
 
-  #toDoInstance {
-    /*display: fixed; --WRONG */
-    margin-top: 0;
+  #to-do-instance {
+    /* margin-top: 0; */
     align-items: center;
     width: 100%;
     /*position: relative;
     left: 5px; */
   }
-
-  /*ZZ.container {
-    position: fixed;
-    top: 10px;
-  }*/
 
   ul {
     position: relative;
@@ -540,8 +990,8 @@ pre {
 }
 
 
-@media (max-width: 770px) {
+/* @media (max-width: 770px) {
   #sessionTimeComponent, #todayDateInstance {
     display: none;
   }
-}
+} */
