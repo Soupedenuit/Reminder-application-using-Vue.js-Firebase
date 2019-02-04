@@ -10,4 +10,5 @@ A custom To Do & reminder application using Vue.js & Firebase with the following
 - Firebase Realtime Database storage
 - Firebase authentication using email login
     
-https://soupedenuit.github.io/Vue.js
+https://soupedenuit.github.io/Reminder-application-using-Vue.js-Firebase
+
