@@ -1,3 +1,13 @@
 # Vue.js
-A custom To Do application using Vue.js 
+A custom To Do application using Vue.js & Firebase with the following features:
+- multiple sorting options
+- timestamped items
+- custom theme color
+- item highlighting
+- scheduled items
+- timed reminders
+- local storage
+- Firebase Realtime Database storage
+- Firebase authentication using email login
+
 https://soupedenuit.github.io/Vue.js
