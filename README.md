@@ -1,5 +1,5 @@
-# Vue.js
-A custom To Do application using Vue.js & Firebase with the following features:
+# Reminder application using Vue.js & Firebase
+A custom To Do & reminder application using Vue.js & Firebase with the following features:
 - multiple sorting options
 - timestamped items
 - custom theme color
