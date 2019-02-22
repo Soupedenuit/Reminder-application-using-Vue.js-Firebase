@@ -121,7 +121,9 @@ href=
 <!-- Authentication -->
 <div id="auth-container">
   <input id="email-input" class="credentials" placeholder="email" value="" />
-  <input id="password-input" class="credentials" placeholder="password" value="" />
+  <form id="password-input-form" action="" autocomplete="off"> <!-- form here only to allow password reset via form.reset() -->
+    <input type="password" autocomplete="off" id="password-input" class="credentials" placeholder="password" value="" />
+  </form>
   <button id="login-btn">login</button>
   <button id="guest-btn">guest</button>
   <input type="button" id="auth-container-close" class="material-icons close-btn" value="close" />
