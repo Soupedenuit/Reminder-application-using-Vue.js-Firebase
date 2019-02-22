@@ -55,7 +55,7 @@ const firebaseAuthModule = (function() {
       console.log(err.message);
       alert(err.message);
     });
-    passw = '';
+    toDoInstance.cachedDOM.passwordInputForm.reset(); // removes password on login form upon login
     window.setTimeout(remindersModule.setRemindersStore,5000)
   }
 
@@ -103,6 +103,10 @@ const firebaseAuthModule = (function() {
 
   function closeLogin() {
     toDoInstance.cachedDOM.authContainer.classList.remove('translateY-slider-login');
+  }
+
+  function resetLoginForm() {
+    toDoInstance.cachedDOM.authContainer.reset();
   }
 
   function changeSignInIconToUnLocked() {
@@ -231,7 +235,8 @@ const firebaseAuthModule = (function() {
 
   return {
     slideContainerIn,
-    slideContainerOut
+    slideContainerOut,
+    resetLoginForm
   }
 
 

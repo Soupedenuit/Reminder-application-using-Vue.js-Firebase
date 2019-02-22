@@ -19,7 +19,6 @@
   *****************************************/
 
   Vue.component('session-time', {
-    //props: ['alpha'],
     template: '<span v-html="beta + alpha"></span>',
     data: function() {
       return {
@@ -133,6 +132,7 @@
         authContainer: document.getElementById('auth-container'),
         emailInput: document.getElementById('email-input'),
         passwordInput: document.getElementById('password-input'),
+        passwordInputForm: document.getElementById('password-input-form'),
         loginBtn: document.getElementById('login-btn'),
         guestBtn: document.getElementById('guest-btn'),
         authContainerClose: document.getElementById('auth-container-close'),
