@@ -500,7 +500,7 @@
     toDoInstance.cachedDOM.colorPicker.value = '#707ac0';
     welcomeInstance.welcomeMsg1 = 'Today will be awesome!';
     var h1 = document.querySelector('h1');
-    h1.textContent = 'NAC PARKING SERVICES';
+    h1.textContent = 'CUSTOM HEADING';
     h1.style.fontSize = '1.8em';
     h1.style.marginTop = '10px';
     changeTheme();
